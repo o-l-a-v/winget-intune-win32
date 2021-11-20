@@ -15,6 +15,11 @@ Use Winget to create logic in Intune that will handle both install and upgrades.
 * Set and forget, I don't want to maintain client applications in Intune.
 * Control, I don't want to run ```winget upgrade --all``` because it also upgrades things like Office ProPlus.
 
+Piggyback others work.
+* [winget-cli](https://github.com/microsoft/winget-cli)
+* [winget-pkgs](https://github.com/microsoft/winget-pkgs)
+* [Microsoft Win32 Content Prep Tool](https://github.com/Microsoft/Microsoft-Win32-Content-Prep-Tool)
+
 ### How it works
 * Use a dummy *.intunewin containing nothing but a empty text file.
 * Create two Win32 packages per app you want to have in Intune installed with Winget-cli.

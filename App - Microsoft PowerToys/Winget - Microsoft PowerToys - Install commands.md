@@ -1,0 +1,81 @@
+# Winget - Microsoft PowerToys - Install commands
+## About
+* Id in Microsoft Store: XP89DCGQ3K6VLD
+* Id in Winget: Microsoft.PowerToys
+
+## App info
+### Install
+Microsoft PowerToys
+### Upgrade
+Update - Microsoft PowerToys
+
+## Description
+Microsoft PowerToys
+
+## Publisher
+Microsoft
+
+## App version
+Latest using Winget
+
+
+## Program
+### Install command
+#### Install
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && AppInstallerCLI.exe install --id XP89DCGQ3K6VLD --silent --accept-package-agreements --accept-source-agreements"
+
+#### Upgrade
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && AppInstallerCLI.exe upgrade --id Microsoft.PowerToys --silent --accept-package-agreements --accept-source-agreements"
+
+
+### Uninstall command
+cmd /c "echo "Not added yet.""
+
+### Behavior
+System
+
+### Exit codes
+0 = Success
+
+
+## Requirement
+### Both
+* 64 bit
+* >= Windows 10 2004 20H1
+
+### Upgrade
+#### File
+Path:  %ProgramW6432%\PowerToys
+File:  PowerToys.exe
+Logic: Exists.
+
+
+## Detection
+### Install
+#### File
+Path:  %ProgramW6432%\PowerToys
+File:  PowerToys.exe
+Logic: Exists.
+
+### Upgrade
+#### PowerShell
+Device_Detect-Upgrade_PowerToysUpgradeAvailableUsingWinget.ps1
+
+#### If CMD was an option
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && AppInstallerCLI.exe list Microsoft.PowerToys | find /i "available""
+
+
+## Dependencies
+### Install
+Microsoft .NET Desktop Runtime v3.1.x x64
+
+### Upgrade
+None, was added when installed, and Windows Updates keeps .NET Desktop Runtime up to date.
+
+
+## Assignment
+### Install
+* Available
+
+### Upgrade
+* Required

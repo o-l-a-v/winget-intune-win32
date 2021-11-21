@@ -38,6 +38,7 @@ Piggyback others work.
 * [winget-cli](https://github.com/microsoft/winget-cli)
 * [winget-pkgs](https://github.com/microsoft/winget-pkgs)
 * [Microsoft Win32 Content Prep Tool](https://github.com/Microsoft/Microsoft-Win32-Content-Prep-Tool)
+* [Oliver Kieselbach](https://oliverkieselbach.com/) [IntuneWinAppUtilDecoder](https://github.com/okieselbach/Intune/tree/master/IntuneWinAppUtilDecoder)
 
 ### How it works
 * Use a dummy *.intunewin containing nothing but a empty text file.

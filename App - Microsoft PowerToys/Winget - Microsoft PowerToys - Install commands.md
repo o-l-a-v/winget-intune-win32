@@ -4,18 +4,19 @@
 * Id in Winget: Microsoft.PowerToys
 
 ## App info
-### Install
+### Name
+#### Install
 Microsoft PowerToys
-### Upgrade
-Update - Microsoft PowerToys
+#### Upgrade
+Upgrade - Microsoft PowerToys
 
-## Description
+### Description
 Microsoft PowerToys
 
-## Publisher
+### Publisher
 Microsoft
 
-## App version
+### App version
 Latest using Winget
 
 
@@ -23,10 +24,8 @@ Latest using Winget
 ### Install command
 #### Install
 cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && AppInstallerCLI.exe install --id XP89DCGQ3K6VLD --silent --accept-package-agreements --accept-source-agreements"
-
 #### Upgrade
 cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && AppInstallerCLI.exe upgrade --id Microsoft.PowerToys --silent --accept-package-agreements --accept-source-agreements"
-
 
 ### Uninstall command
 cmd /c "echo "Not added yet.""
@@ -44,7 +43,7 @@ System
 * >= Windows 10 2004 20H1
 
 ### Upgrade
-#### File
+#### Manually -> File
 Path:  %ProgramW6432%\PowerToys
 File:  PowerToys.exe
 Logic: Exists.
@@ -52,14 +51,14 @@ Logic: Exists.
 
 ## Detection
 ### Install
-#### File
+#### Manually -> File
 Path:  %ProgramW6432%\PowerToys
 File:  PowerToys.exe
 Logic: Exists.
 
 ### Upgrade
 #### PowerShell
-Device_Detect-Upgrade_PowerToysUpgradeAvailableUsingWinget.ps1
+Device_Detect-Upgrade_MicrosoftPowerToysUpgradeAvailableUsingWinget.ps1
 
 #### If CMD was an option
 cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && AppInstallerCLI.exe list Microsoft.PowerToys | find /i "available""

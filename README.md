@@ -5,6 +5,7 @@ Repository containing examples of how to use winget from Intune, also in system 
 ## Disclaimer
 * Files and info in this repo is provided as is. I'm not responsible for what you decide to push to your clients.
 * I'm not good at git. Feel free to commit changes, but I might struggle doing git right. Bear with me.
+* If logic in this repo breaks, I do not commit to fix it in a timely manner.
 
 ## Background
 After I saw [rothgecw](https://github.com/rothgecw) had found of that [Winget-cli can run from System context](https://github.com/microsoft/winget-cli/discussions/962#discussioncomment-1561274), I started thinking about how that would be usefull from Intune.
@@ -14,6 +15,24 @@ After I saw [rothgecw](https://github.com/rothgecw) had found of that [Winget-cl
 Use Winget to create logic in Intune that will handle both install and upgrades.
 * Set and forget, I don't want to maintain client applications in Intune.
 * Control, I don't want to run ```winget upgrade --all``` because it also upgrades things like Office ProPlus.
+
+But only for apps that either does not autoupgrade by itself, or autoupgrade requires admin permissions.
+* Excludes:
+  * Apps in system context that auto updates using a service running as SYSTEM
+    * Adobe Acrobat Reader DC
+	* Google Chrome
+	* Mozilla Firefox
+  * Microsoft Store UWP apps
+  * Apps in user context that auto updates
+    * 1Password
+	* Microsoft Visual Studio Code (User)
+* Includes:
+  * 7-Zip
+  * Microsoft PowerToys
+  * Microsoft Visual Studio Code
+  * Notepad++
+
+Apps not available in Microsoft Store that auto updates though, will still be nice to install using Winget. But then skip creating upgrade logic.
 
 Piggyback others work.
 * [winget-cli](https://github.com/microsoft/winget-cli)

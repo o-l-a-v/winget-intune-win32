@@ -17,7 +17,7 @@ Notepad++
 Notepad++
 
 ### App version
-Lates using Winget
+Latest using Winget
 
 
 ## Program

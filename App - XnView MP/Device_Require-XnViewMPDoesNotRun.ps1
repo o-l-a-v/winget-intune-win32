@@ -5,8 +5,8 @@
 
     .NOTES
         Author:   Olav Rønnestad Birkeland
-        Created:  211121
-        Modified: 211121
+        Created:  211124
+        Modified: 211124
 
     .EXAMPLE
         & $psISE.CurrentFile.FullPath
@@ -27,7 +27,7 @@ $InformationPreference = 'Continue'
 if (
     $(
         [array](
-            Get-Process -Name 'notepad++*' -ErrorAction 'SilentlyContinue'
+            Get-Process -Name 'xnviewmp' -ErrorAction 'SilentlyContinue'
         )
     ).'Count' -le 0
 ) {

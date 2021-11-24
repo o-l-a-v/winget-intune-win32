@@ -32,9 +32,9 @@ if (
     ).'Count' -le 0
 ) {
     Write-Information -MessageData 'Not currently running.'
-    $false
+    $true
 }
 else {
     Write-Information -MessageData 'Currently running.'
-    $true
+    $false
 }

@@ -1,7 +1,7 @@
 ﻿#Requires -Version 5.1
 <#
     .SYNOPSIS
-        Detects whether Notepad++ runs, returns $false if it does.
+        Detects whether XnConvert runs, returns $false if it does.
 
     .NOTES
         Author:   Olav Rønnestad Birkeland

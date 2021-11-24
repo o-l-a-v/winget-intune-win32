@@ -1,7 +1,7 @@
 ﻿#Requires -Version 5.1
 <#
     .SYNOPSIS
-        Detects whether Notepad++ runs, returns $false if it does.
+        Detects whether Git runs, returns $false if it does.
 
     .NOTES
         Author:   Olav Rønnestad Birkeland
@@ -27,9 +27,11 @@ $InformationPreference = 'Continue'
 if (
     $(
         [array](
-            Get-Process -Name 'xnviewmp' -ErrorAction 'SilentlyContinue'
+            Get-Process -Name 'git*' -ErrorAction 'SilentlyContinue'
         )
-    ).'Count' -le 0
+    ).Where{
+        $_.'Path' -like ('{0}\Git\*' -f $env:ProgramW6432)
+    }.'Count' -le 0
 ) {
     Write-Information -MessageData 'Not currently running.'
     $true

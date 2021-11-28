@@ -17,7 +17,7 @@ Notepad++
 Notepad++
 
 ### App version
-Lates using Winget
+Latest from Winget
 
 
 ## Program
@@ -47,7 +47,6 @@ System
 Path:  %ProgramW6432%\Notepad++
 File:  notepad++.exe
 Logic: Exists.
-
 #### Script
 Script: Device_Require-Notepad++DoesNotRun.ps1
 Type:   Boolean

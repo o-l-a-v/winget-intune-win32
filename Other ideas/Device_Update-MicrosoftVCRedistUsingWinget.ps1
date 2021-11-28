@@ -88,6 +88,7 @@ foreach ($VCRedistVersion in $VCRedistVersions.Where{$_.'UpdateAvailable'}) {
     Write-Information -MessageData ('# Update available for "{0}"' -f $VCRedistVersion.'WingetId')
     
     # Check for special cases
+    ## If not special case, use winget upgrade    
     if ([string]::IsNullOrEmpty($VCRedistSpecialCases.$($VCRedistVersion.'Version'))) {
         Write-Information -MessageData 'No special case defined, upgrading as usual.'
         # Upgrade
@@ -98,6 +99,8 @@ foreach ($VCRedistVersion in $VCRedistVersions.Where{$_.'UpdateAvailable'}) {
             )
         )
     }
+    
+    ## Else, use winget install <wanted_version>
     else {
         Write-Information -MessageData (
             'Special case, "{0}" will be upgraded using "{1}".' -f (
@@ -114,9 +117,6 @@ foreach ($VCRedistVersion in $VCRedistVersions.Where{$_.'UpdateAvailable'}) {
         )
     }
 
-    # Output success
-    Write-Information -MessageData ('$LASTEXITCODE = "{0}", $? = "{1}"' -f $LASTEXITCODE, $?.ToString())
-
     # Add to exit codes
     $WingetExitCodes += [PSCustomObject[]](
         [PSCUstomObject]@{
@@ -125,6 +125,9 @@ foreach ($VCRedistVersion in $VCRedistVersions.Where{$_.'UpdateAvailable'}) {
             '$?'            = [bool] $_
         }
     )
+
+    # Output success
+    Write-Information -MessageData ('$LASTEXITCODE = "{0}", $? = "{1}"' -f $LASTEXITCODE, $?.ToString())    
 }
 
 

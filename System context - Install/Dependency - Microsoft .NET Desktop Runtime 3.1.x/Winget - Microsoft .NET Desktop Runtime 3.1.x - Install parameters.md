@@ -1,7 +1,4 @@
 # Winget - Microsoft .NET Desktop Runtime 3.1.x x64 - Install parameters.md
-## About
-* Id in Winget: Microsoft.dotnetRuntime.3-x64
-
 ## App information
 ### Name
 Dependency - Microsoft .NET Desktop Runtime 3.1.x x64
@@ -13,7 +10,7 @@ Microsoft .NET Desktop Runtime 3.1.x x64
 Microsoft
 
 ### App version
-Latest using Winget
+Latest from Winget
 
 
 ## Program
@@ -35,7 +32,6 @@ System
 ## Detection
 ### Script
 Device_Detect-Dependency_MicrosoftNetCoreDesktopRuntime3UsingWinget.ps1
-
 
 
 ## Dependencies

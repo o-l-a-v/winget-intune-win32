@@ -1,7 +1,7 @@
 ﻿#Requires -Version 5.1
 <#
     .SYNOPSIS
-        Detects whether 7-Zip runs, returns $false if it does.
+        Detects whether Notepad++ runs, returns $false if it does.
 
     .NOTES
         Author:   Olav Rønnestad Birkeland
@@ -27,14 +27,14 @@ $InformationPreference = 'Continue'
 if (
     $(
         [array](
-            Get-Process -Name '7z*' -ErrorAction 'SilentlyContinue'
+            Get-Process -Name 'notepad++*' -ErrorAction 'SilentlyContinue'
         )
     ).'Count' -le 0
 ) {
     Write-Information -MessageData 'Not currently running.'
-    $false
+    $true
 }
 else {
     Write-Information -MessageData 'Currently running.'
-    $true
+    $false
 }

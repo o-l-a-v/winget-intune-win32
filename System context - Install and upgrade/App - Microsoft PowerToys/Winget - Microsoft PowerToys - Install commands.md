@@ -17,7 +17,7 @@ Microsoft PowerToys
 Microsoft
 
 ### App version
-Latest using Winget
+Latest from Winget
 
 
 ## Program
@@ -59,7 +59,6 @@ Logic: Exists.
 ### Upgrade
 #### PowerShell
 Device_Detect-Upgrade_MicrosoftPowerToysUpgradeAvailableUsingWinget.ps1
-
 #### If CMD was an option
 cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && AppInstallerCLI.exe list Microsoft.PowerToys | find /i "available""
 

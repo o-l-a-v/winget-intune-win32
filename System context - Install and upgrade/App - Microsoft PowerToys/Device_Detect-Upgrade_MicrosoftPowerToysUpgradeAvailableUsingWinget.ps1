@@ -1,5 +1,4 @@
-﻿#Requires -RunAsAdministrator
-#Requires -Version 5.1
+﻿#Requires -Version 5.1
 <#
     .SYNOPSIS
         Uses Winget to see if a new version is available for PowerToys.
@@ -7,10 +6,10 @@
     .NOTES
         Author:   Olav Rønnestad Birkeland
         Created:  211120
-        Modified: 211120
+        Modified: 211124
 
     .EXAMPLE
-        & $psISE.CurrentFile.FullPath
+        & $psISE.CurrentFile.FullPath; $LASTEXITCODE
 #>
 
 
@@ -30,7 +29,18 @@ $FileDetectPath  = [string] '{0}\PowerToys\PowerToys.exe' -f $env:ProgramW6432
 $WingetId        = [string] 'Microsoft.PowerToys'
 
 ## Generic
-$WingetPushdPath = [string] '{0}\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe' -f $env:ProgramW6432
+$WingetCliPath = [string](
+    $(
+        if ([System.Security.Principal.WindowsIdentity]::GetCurrent().'User'.'Value' -eq 'S-1-5-18') {
+            '{0}\AppInstallerCLI.exe' -f (
+                (Get-Item -Path ('{0}\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe' -f $env:ProgramW6432)).'FullName' | Select-Object -First 1                    
+            )
+        }
+        else {
+            '{0}\Microsoft\WindowsApps\winget.exe' -f $env:LOCALAPPDATA
+        }
+    )
+)
 
 
 # Check if installed, exit 0 if not
@@ -40,9 +50,15 @@ if (-not [System.IO.File]::Exists($FileDetectPath)) {
 }
 
 
-# Check if update available - Only works from system context
-Set-Location -Path $WingetPushdPath
-$WingetResult = [string[]](cmd /c ('AppInstallerCLI.exe list {0}'-f$WingetId))
+# Check if $WingetCli exists
+if (-not [System.IO.File]::Exists($WingetCliPath)) {
+    Write-Output -InputObject 'Did not find Winget.'
+    Exit 0
+}
+
+
+# Check if update available with Winget
+$WingetResult = [string[]](cmd /c ('"{0}" list {1}' -f $WingetCliPath, $WingetId))
 
 
 # Check if update was available, exit 0 if not

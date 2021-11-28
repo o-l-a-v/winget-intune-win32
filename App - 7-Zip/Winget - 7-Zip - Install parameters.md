@@ -17,7 +17,7 @@ Upgrade - 7-Zip
 Igor Pavlov
 
 ### App version
-Latest from Winget
+Latest using Winget
 
 
 ## Program
@@ -28,10 +28,7 @@ cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8
 cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && AppInstallerCLI.exe upgrade --id 7zip.7zip --silent --accept-package-agreements --accept-source-agreements"
 
 ### Uninstall command
-#### General
 cmd /c "echo "Not added yet.""
-#### EXE
-"%ProgramW6432%\7-Zip\Uninstall.exe" /S
 
 ### Behavior
 System
@@ -50,6 +47,7 @@ System
 Path:  %ProgramW6432%\7-Zip
 File:  7z.exe
 Logic: Exists.
+
 #### Script
 Script: Device_Require-7ZipDoesNotRun.ps1
 Type:   Boolean

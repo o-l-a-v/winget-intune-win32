@@ -2,6 +2,10 @@
 ## About
 * Id in Microsoft Store: XP89DCGQ3K6VLD
 * Id in Winget: Microsoft.PowerToys
+* Winget might say update available when ```winget list --id Microsoft.PowerToys``` or ```winget upgrade```, but when ```winget upgrade --id Microsoft.PowerToys```, it says no update available.
+  * https://github.com/microsoft/winget-cli/issues/752
+  * https://github.com/microsoft/winget-pkgs/pull/36499#issuecomment-983378039
+
 
 ## App info
 ### Name

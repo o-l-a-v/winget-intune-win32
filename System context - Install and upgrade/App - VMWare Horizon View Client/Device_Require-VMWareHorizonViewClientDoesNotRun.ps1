@@ -14,7 +14,7 @@
 
 
 # Input parameters
-[OutputType($null)]
+[OutputType([bool])]
 Param()
 
 

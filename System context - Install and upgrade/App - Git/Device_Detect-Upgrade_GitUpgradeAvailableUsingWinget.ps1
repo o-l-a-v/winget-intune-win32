@@ -6,14 +6,14 @@
     .NOTES
         Author:   Olav Rønnestad Birkeland
         Created:  211124
-        Modified: 211124
+        Modified: 211201
 
     .EXAMPLE
         & $psISE.CurrentFile.FullPath; $LASTEXITCODE
 #>
 
 
-# Inpup parameters
+# Input parameters
 [OutputType($null)]
 Param()
 
@@ -33,7 +33,7 @@ $WingetCliPath = [string](
     $(
         if ([System.Security.Principal.WindowsIdentity]::GetCurrent().'User'.'Value' -eq 'S-1-5-18') {
             '{0}\AppInstallerCLI.exe' -f (
-                (Get-Item -Path ('{0}\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe' -f $env:ProgramW6432)).'FullName' | Select-Object -First 1                    
+                (Get-Item -Path ('{0}\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe' -f $env:ProgramW6432)).'FullName' | Select-Object -First 1
             )
         }
         else {
@@ -58,7 +58,11 @@ if (-not [System.IO.File]::Exists($WingetCliPath)) {
 
 
 # Check if update available with Winget
-$WingetResult = [string[]](cmd /c ('"{0}" list {1}' -f $WingetCliPath, $WingetId))
+$WingetResult = [string[]](cmd /c ('"{0}" list --id {1}' -f $WingetCliPath, $WingetId))
+
+
+# View output from Winget
+Write-Information -MessageData ($WingetResult[-3 .. -1] -join [System.Environment]::NewLine)
 
 
 # Check if update was available, exit 0 if not

@@ -133,7 +133,7 @@ foreach ($VCRedistVersion in $VCRedistVersions.Where{$_.'UpdateAvailable'}) {
 
 
 # Exit
-if ($WingetExitCodes.Where{$_.'$LASTEXITCODE' -eq 0}.'Count' -eq $VCRedistVersions.Where{$_.'UpdateAvailable'}) {
+if ($WingetExitCodes.Where{$_.'$LASTEXITCODE' -eq 0}.'Count' -eq $VCRedistVersions.Where{$_.'UpdateAvailable'}.'Count') {
     Write-Output -InputObject 'Success.'
     Exit 0
 }

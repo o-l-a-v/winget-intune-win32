@@ -10,17 +10,21 @@
 
     .EXAMPLE
         & $psISE.CurrentFile.FullPath
+        & $psISE.CurrentFile.FullPath -Testing
 #>
 
 
 # Input parameters
 [OutputType([bool])]
-Param()
+Param(
+    [Parameter(HelpMessage = 'Enabling this breaks Intune Win32 requirement script, so it is off by default.')]
+    [switch] $Testing
+)
 
 
 # PowerShell preferences
 $ErrorActionPreference = 'Stop'
-$InformationPreference = 'Continue'
+$InformationPreference = $(if($Testing){'Continue'}else{'SilentlyContinue'})
 
 
 # Check if running

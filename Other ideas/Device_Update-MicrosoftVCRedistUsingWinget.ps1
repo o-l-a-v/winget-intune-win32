@@ -59,7 +59,7 @@ $WingetExitCodes = [PSCustomObject[]]@()
 
 # Check what updates are available
 $UpdatesAvailable = [string[]](
-    cmd /c ('"{0}" upgrade' -f $WingetCliPath)
+    cmd /c ('"{0}" upgrade' -f $WingetCliPath) | Where-Object -FilterScript {$_[0] -notmatch '\s'}
 )
 
 

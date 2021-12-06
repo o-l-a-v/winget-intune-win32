@@ -7,7 +7,7 @@
     .NOTES
         Author:   Olav Rønnestad Birkeland
         Created:  211205
-        Modified: 211205
+        Modified: 211206
 
     .EXAMPLE
         & $psISE.CurrentFile.FullPath; $LASTEXITCODE
@@ -24,6 +24,7 @@ Param()
 # PowerShell preferences
 $ErrorActionPreference = 'Stop'
 $InformationPreference = 'Continue'
+$ProgressPreference    = 'SilentlyContinue'
 
 
 
@@ -48,7 +49,7 @@ Try {
 
     ## Get latest version from GitHub
     $Latest = [PSCustomObject](Invoke-RestMethod -Method 'Get' -Uri 'https://api.github.com/repos/paintdotnet/release/releases/latest')
-    $LatestVersion  = [System.Version] $Latest.'Name'
+    $LatestVersion  = [System.Version] $Latest.'name'
     $LatestFileUri  = [string] $Latest.'assets'.Where{$_.'name' -like '*.winmsi.x64.zip'}.'browser_download_url'
     $LatestFileSize = [uint32] $Latest.'assets'.Where{$_.'name' -like '*.winmsi.x64.zip'}.'size'
 
@@ -143,12 +144,39 @@ Try {
     Write-Information -MessageData ('msiexec results: $? = "{0}", $LASTEXITCODE = "{1}".' -f $?.ToString(), $LASTEXITCODE.ToString())
 }
 Catch {
+    # Set exit code
     if ($LASTEXITCODE -and $LASTEXITCODE -ne 0) {
         $ExitCode = $LASTEXITCODE
     }
+    # Set success to false
     $Success = [bool] $false
+    # Write the catched error
     Write-Error -ErrorAction 'Continue' -ErrorRecord $_
 }
+
+
+
+# Clean up files
+## Introduce step
+Write-Information -MessageData ('{0}# Clean up files' -f [System.Environment]::NewLine)
+
+## Clean up files
+$([string[]]($DownloadPath,$ExtractPath)).Where{
+    -not [string]::IsNullOrEmpty($_) -and [System.IO.File]::Exists($_)
+}.ForEach{
+    Write-Information -MessageData (
+        'Deleting "{0}". Success? "{1}".' -f $_, $(
+            Try {
+                $null = [System.IO.File]::Delete($_)
+                $?
+            }
+            Catch {
+                $false
+            }
+        ).ToString()
+    )
+}
+
 
 
 # Exit

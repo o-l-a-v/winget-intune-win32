@@ -7,7 +7,7 @@
     .NOTES
         Author:   Olav Rønnestad Birkeland
         Created:  211205
-        Modified: 211205
+        Modified: 211206
 
     .EXAMPLE
         & $psISE.CurrentFile.FullPath; $LASTEXITCODE
@@ -73,12 +73,24 @@ $Latest = [PSCustomObject](
         }
     )
 )
+Write-Information -MessageData ('GitHub says latest version is: "{0}".' -f $Latest.'name')
+$LatestVersion = [System.Version](
+    $(
+        Try {
+            [System.Version]($Latest.'name' -replace '[^0-9.]', '')
+        }
+        Catch {
+            '0.0.0'
+        }
+    )
+)
+Write-Information -MessageData ('After regex cleanup (should be the same): "{0}".' -f $LatestVersion.ToString())
 
 
 
 # Exit
 ## Introduce step
-Write-Information -MessageData '# Exit'
+Write-Information -MessageData ('{0}# Exit' -f [System.Environment]::NewLine)
 
 ## If not installed, exit with 0
 if (-not [System.IO.File]::Exists($InstalledPath) -or $VersionInstalled -eq $([System.Version]'0.0.0')) {
@@ -88,13 +100,14 @@ if (-not [System.IO.File]::Exists($InstalledPath) -or $VersionInstalled -eq $([S
 ## Else / if installed
 else {
     # Failproof - Check if we found a version from GitHub
-    if ([string]::IsNullOrEmpty($Latest.'name')) {
+    if ([string]::IsNullOrEmpty($LatestVersion)) {
         Write-Output -InputObject 'Failed to get latest version from GitHub - No info on attribute "name".'
         Exit 0
     }
     # Failproof - Check if found version from GitHub can be read as [System.Version]
-    if (-not $(Try{$null = $Latest.'name' -as [System.Version]; $?}Catch{$false})) {
+    if (-not $(Try{$null = $Latest.'name' -as [System.Version]; $?}Catch{$false}) -or $Latest.'name' -ne $LatestVersion.ToString()) {
         Write-Output -InputObject ('Failed to get latest version from GitHub - Attribute "name" value "{0}" cannot be read as a version.' -f $Latest.'name')
+        Write-Output -InputObject ('If script is modified to not fail by using regex to clean up the version number, it would be: "{0}".' -f $LatestVersion)
         Exit 0
     }
     # Failproof - Check if we found URL to latest x64 MSI ZIP, if not the installer script will fail

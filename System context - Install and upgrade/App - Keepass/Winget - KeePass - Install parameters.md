@@ -14,7 +14,7 @@
   * Caveats:
     * Winget does not detect existing EXE install.
     * Neither KeePass MSI installer or Winget handles clean upgrade/ install of MSI over EXE.
-      * Old EXE install will stil exists.
+      * Old EXE install will still exist.
   * Related issues:
     * https://sourceforge.net/p/keepass/bugs/1811/
 
@@ -56,7 +56,7 @@ System
 ## Requirement
 ### Both
 * 64 bit
-* >= Windows 10 2004 20H1
+* \>= Windows 10 2004 20H1
 
 ### Upgrade
 #### Manually -> File

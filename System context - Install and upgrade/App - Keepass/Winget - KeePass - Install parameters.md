@@ -8,11 +8,15 @@
 * Winget installs MSI, not EXE.
   * Install paths:
     * MSI: "%ProgramFiles(x86)%\KeePass2x".
-    * EXE: "%ProgramW6432%\KeePass Password Safe 2".
+    * EXE >= v2.50: "%ProgramW6432%\KeePass Password Safe 2".
+	* EXE <= v2.41: "%ProgramFiles(x86)%\KeePass Password Safe 2".
+	  * Upgrade installs to "%ProgramW6432%\KeePass Password Safe 2" if it already exists.
   * Caveats:
     * Winget does not detect existing EXE install.
-	* Neither KeePass MSI installer or Winget handles clean upgrade/ install of MSI over EXE.
-	  * Old EXE install will stil exists.
+    * Neither KeePass MSI installer or Winget handles clean upgrade/ install of MSI over EXE.
+      * Old EXE install will stil exists.
+  * Related issues:
+    * https://sourceforge.net/p/keepass/bugs/1811/
 
 
 ## App information

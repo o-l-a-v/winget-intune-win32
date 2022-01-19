@@ -43,12 +43,12 @@ System
 
 ### Upgrade
 #### Manually -> File
-Path:  %ProgramW6432%\Oracle\Java SE 8 JRE\bin
-File:  java.exe
+Path:  %ProgramW6432%\Oracle\Java SE 8 JRE\bin  
+File:  java.exe  
 Logic: Exists.
 #### Script
-Script: Device_Require-OracleJavaSE8JREDoesNotRun.ps1
-Type:   Boolean
+Script: Device_Require-OracleJavaSE8JREDoesNotRun.ps1  
+Type:   Boolean  
 Logic:  $true means not running, which is what we want.
 
 

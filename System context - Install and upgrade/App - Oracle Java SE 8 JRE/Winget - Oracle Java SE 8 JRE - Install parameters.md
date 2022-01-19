@@ -39,7 +39,7 @@ System
 ## Requirements
 ### All scenarios
 * 64 bit
-* >= Windows 10 2004 20H1
+* \>= Windows 10 2004 20H1
 
 ### Upgrade
 #### Manually -> File

@@ -2,6 +2,7 @@
 ## About
 * Winget id: ```Oracle.JavaRuntimeEnvironment```.
 * Must be licensed if used in enterprise.
+  * https://www.oracle.com/java/java-se-subscription/
 
 
 ## App information

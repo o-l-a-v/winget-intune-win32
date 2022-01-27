@@ -13,7 +13,7 @@ Repository containing examples of how to use winget from Intune, also in system 
 
 ## How to use
 ### Pre-requirements
-Following requirements should be included in a fresh installation of Windows 10 and 11, but aren't always present. Which has caused problems. So mentioning them here just in case.
+Following requirements should be included in a fresh installation of Windows 10 and 11, but aren't always present. Which has caused problems. So I'm mentioning them here just in case.
 * ```winget-cli``` must be installed, comes with newer versions of [App Installer](https://www.microsoft.com/en-us/store/apps/9nblggh4nns1).
 * Microsoft Visual C++ Runtime v14 / 2015-2019.
 
@@ -70,6 +70,9 @@ Only for apps without built-in auto update, or where auto-update requires admin 
 
 
 ## Future ideas
+* Add check and fix for prerequirements, in case they aren't present.
+  * App Installer version that includes ```winget-cli```.
+  * Microsoft Visual C++ v14 runtime.
 * Create single script per context (user, system) for upgrades.
   * PSADT, serviceui.exe and toast notifications for showing users notifications when logic runs from system context
     * https://www.anoopcnair.com/use-serviceui-with-intune-to-bring-system-process-to-interactive-mode/

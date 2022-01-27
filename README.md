@@ -11,58 +11,32 @@ Repository containing examples of how to use winget from Intune, also in system 
 
 
 
-## Background
-After I saw that [rothgecw](https://github.com/rothgecw) had figured out how to use [```winget-cli``` from System context](https://github.com/microsoft/winget-cli/discussions/962#discussioncomment-1561274), I started thinking about how that would be usefull from Intune.
+## How to use
+### Pre-requirements
+Following requirements should be included in a fresh installation of Windows 10 and 11, but aren't always present. Which has caused problems. So mentioning them here just in case.
+* ```winget-cli``` must be installed, comes with newer versions of [App Installer](https://www.microsoft.com/en-us/store/apps/9nblggh4nns1).
+* Microsoft Visual C++ Runtime v14 / 2015-2019.
 
 
-
-## Why
-### Greenfield
-* Configure once.
-
-
-### Security
-* Keep apps and dependencies up to date.
-* Remove need for admin permissions for end users.
-
-### End users ease of use
-* Make everything and app that:
-  * Does not require admin for install and update.
-  * Can be installed from a central store, even though an app is not in Microsoft Store yet.
-  * Autoupdates, even though it does not have such functionality built in, or if such functionality requires admin permissions.
-
-### Flexibility
-* Use Winget how you want, with whatever logic and mechanisms you want.
-
-### Other
-* The postive far outweighs the negative, in my opinion.
-  * See "Why not" section for context.
-* "Free", with the pros and cons it brings.
-  * Neither Windows or Intune is free.
+### Setup per app
+Create two Win32 packages per app you want to have in Intune installed with ```winget-cli```.
+* One being available to install from Company Portal, where:
+  * Install command uses winget-cli to get newest app available.
+  * Detection rule is static, not checking version.
+    * If new version is detected in this package, Company Portal will say that app install failed.
+    * Maybe Company Portal can handle this in the future?
+* One being required, where:
+  * **Only required if the app itself does not have auto update functionality that doesn't require admin permissions.**
+  * Requirement rules requires app to be installed already.
+    * NB: If you don't want to interrupt the end user, make sure to add logic to requirement rule that does keep the upgrade from running if for instance process X and Y are running.
+  * Detection rule uses winget-cli to detect if newer version is available.
 
 
-
-## Why not
-### Bandwidth
-* Does not utilize Delivery Optimization like packaging installers inside .intunewin does.
-
-
-### Security
-* Winget default package manifest is public and open source manifest, so far without good controls for:
-  * Authenticity
-    * https://github.com/microsoft/winget-pkgs/issues/7836
-
-
-### Reliability
-* Winget default package manifest is public and open source manifest, without any guarantees or SLAs.
-  * But more and more automation and controls are added all the time.
-* ```winget-cli``` is premature, a lot of what should be universal functionality does not work for everything yet.
-  * Examples
-    * Can't use ```winget upgrade``` to upgrade a lot of apps.
-	* Can't easily configure apps to exclude from ```winget upgrade --all```.
-  * Thus one must make a considerable amount of custom logic to handle certain apps, that might suddenly break when it gets fixed by the ```winget-cli``` project later.
-* ```winget-pkgs``` manifest still has some considerable shortcomings.
-* Prerequirements like ```winget-cli``` and Microsoft Visual C++ isn't alway available on a clean OS install.
+### Remember
+* Observe that I have different detection logic and assignment type, given these three different scenarios
+  * Install
+  * Upgrade
+  * Dependency
 
 
 
@@ -95,42 +69,73 @@ Only for apps without built-in auto update, or where auto-update requires admin 
 
 
 
-## How to use
-### Pre-requirements
-Following requirements should be included in a fresh installation of Windows 10 and 11, but aren't always present. Which has caused problems. So mentioning them here just in case.
-* ```winget-cli``` must be installed, comes with newer versions of [App Installer](https://www.microsoft.com/en-us/store/apps/9nblggh4nns1).
-* Microsoft Visual C++ Runtime v14 / 2015-2019.
-
-
-### Setup per app
-Create two Win32 packages per app you want to have in Intune installed with ```winget-cli```.
-* One being available to install from Company Portal, where:
-  * Install command uses winget-cli to get newest app available.
-  * Detection rule is static, not checking version.
-    * If new version is detected in this package, Company Portal will say that app install failed.
-    * Maybe Company Portal can handle this in the future?
-* One being required, where:
-  * **Only required if the app itself does not have auto update functionality that doesn't require admin permissions.**
-  * Requirement rules requires app to be installed already.
-    * NB: If you don't want to interrupt the end user, make sure to add logic to requirement rule that does keep the upgrade from running if for instance process X and Y are running.
-  * Detection rule uses winget-cli to detect if newer version is available.
-
-
-### Remember
-* Observe that I have different detection logic and assignment type, given these three different scenarios
-  * Install
-  * Upgrade
-  * Dependency
-
-
-
 ## Future ideas
 * Create single script per context (user, system) for upgrades.
   * PSADT, serviceui.exe and toast notifications for showing users notifications when logic runs from system context
     * https://www.anoopcnair.com/use-serviceui-with-intune-to-bring-system-process-to-interactive-mode/
   * Host manifest of what apps to upgrade in a storage account maybe?
     * Never use "winget upgrade --all".
-	
+
+
+
+## Background
+### Inspiration
+After I saw that [rothgecw](https://github.com/rothgecw) had figured out how to use [```winget-cli``` from System context](https://github.com/microsoft/winget-cli/discussions/962#discussioncomment-1561274), I started thinking about how that would be usefull from Intune.
+
+
+### Why
+#### Greenfield
+* Configure once.
+
+#### Security
+* Keep apps and dependencies up to date.
+* Remove need for admin permissions for end users.
+
+#### End users ease of use
+* Make everything and app that:
+  * Does not require admin for install and update.
+  * Can be installed from a central store, even though an app is not in Microsoft Store yet.
+  * Autoupdates, even though it does not have such functionality built in, or if such functionality requires admin permissions.
+
+#### Flexibility
+* Use Winget how you want, with whatever logic and mechanisms you want.
+
+#### Other
+* The postive far outweighs the negative, in my opinion.
+  * See "Why not" section for context.
+* "Free", with the pros and cons it brings.
+  * Neither Windows or Intune is free.
+
+
+### Why not
+#### Bandwidth
+* Does not utilize Delivery Optimization like packaging installers inside .intunewin does.
+
+#### Security
+* Winget default package manifest is public and open source manifest, so far without good controls for:
+  * Authenticity
+    * https://github.com/microsoft/winget-pkgs/issues/7836
+
+#### Reliability
+* Winget default package manifest is public and open source manifest, without any guarantees or SLAs.
+  * But more and more automation and controls are added all the time.
+* ```winget-cli``` is premature, functionality that one would expect of a package manager isn't there yet.
+  * https://github.com/microsoft/winget-cli/issues?q=is%3Aissue+is%3Aopen+sort%3Acomments-desc
+  * Examples
+    * Can't use ```winget upgrade``` to upgrade a lot of apps.
+	  * But can often use ```winget install``` as a workaround.
+	* Can't easily configure apps to exclude from ```winget upgrade --all```.
+	* Can't specify multiple IDs to install in one command.
+	* Can't override what architecture to install if multiple are available.
+	* Can't override what installer (.EXE / .MSI) to use if multiple are available.
+	* No native PowerShell support.
+  * Thus one must make a considerable amount of custom logic to handle certain apps, that might suddenly break when it gets fixed by the ```winget-cli``` project later.
+* ```winget-pkgs``` manifest still has some shortcomings.
+  * https://github.com/microsoft/winget-pkgs/issues?q=is%3Aissue+is%3Aopen+sort%3Acomments-desc
+  * Examples
+    * Can't restrict publics access to specific vendors and/ or packages.
+* Prerequirements like ```winget-cli``` and Microsoft Visual C++ isn't alway available on a clean OS install.
+
 
 	
 ## Resources

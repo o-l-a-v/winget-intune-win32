@@ -23,10 +23,14 @@ $ErrorActionPreference = 'Stop'
 $InformationPreference = 'Continue'
 
 
+# Fix winget encoding
+$null = cmd /c '' # Workaround for PowerShell ISE "Exception setting "OutputEncoding": "The handle is invalid.""
+$Global:OutputEncoding = [Console]::InputEncoding = [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new()
+
+
 # Assets
 ## Scenario specific
-$FileDetectPath  = [string] '{0}\Oracle\Java SE 8 JRE\bin\java.exe' -f $env:ProgramW6432
-$WingetId        = [string] 'Oracle.JavaRuntimeEnvironment'
+$WingetId = [string] 'Oracle.JavaRuntimeEnvironment'
 
 ## Generic
 $WingetCliPath = [string](
@@ -41,13 +45,6 @@ $WingetCliPath = [string](
         }
     )
 )
-
-
-# Check if installed, exit 0 if not
-if (-not [System.IO.File]::Exists($FileDetectPath)) {
-    Write-Output -InputObject 'Not installed, so no upgrade available.'
-    Exit 0
-}
 
 
 # Check if $WingetCli exists

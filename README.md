@@ -1,7 +1,10 @@
 # winget-intune-win32
 ## About
+### This repo
 Repository containing examples of how to use winget from Intune, also in system context.
 
+### Inspiration
+After I saw that [rothgecw](https://github.com/rothgecw) had figured out how to use [```winget-cli``` from System context](https://github.com/microsoft/winget-cli/discussions/962#discussioncomment-1561274), I started thinking about how that would be usefull from Intune.
 
 
 ## Disclaimer
@@ -84,10 +87,6 @@ Only for apps without built-in auto update, or where auto-update requires admin 
 
 
 ## Background
-### Inspiration
-After I saw that [rothgecw](https://github.com/rothgecw) had figured out how to use [```winget-cli``` from System context](https://github.com/microsoft/winget-cli/discussions/962#discussioncomment-1561274), I started thinking about how that would be usefull from Intune.
-
-
 ### Why
 #### Greenfield
 * Configure once.
@@ -145,6 +144,7 @@ After I saw that [rothgecw](https://github.com/rothgecw) had figured out how to 
 	
 ## Resources
 ### Similar or related projects
+* https://github.com/Romanitho/Winget-Install
 * https://github.com/Romanitho/Winget-autoupdate
 * https://github.com/jdhitsolutions/WingetTools
 
@@ -157,6 +157,7 @@ After I saw that [rothgecw](https://github.com/rothgecw) had figured out how to 
 
 #### By others
 * [Oliver Kieselbach](https://oliverkieselbach.com/) [IntuneWinAppUtilDecoder](https://github.com/okieselbach/Intune/tree/master/IntuneWinAppUtilDecoder)
+* [Simeon Cloud](https://www.simeoncloud.com/) [IntuneAppBuilder](https://github.com/simeoncloud/IntuneAppBuilder)
 
 
 ### Requirements

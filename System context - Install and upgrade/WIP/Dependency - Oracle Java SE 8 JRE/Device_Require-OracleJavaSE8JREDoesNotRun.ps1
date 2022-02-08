@@ -1,12 +1,12 @@
 ﻿#Requires -Version 5.1
 <#
     .SYNOPSIS
-        Detects whether Oracle Java SE 8 JRE runs, returns $false if it does.
+        Confirms that important Java processes are not running.
 
     .NOTES
         Author:   Olav Rønnestad Birkeland
         Created:  220119
-        Modified: 220119
+        Modified: 220208
 
     .EXAMPLE
         & $psISE.CurrentFile.FullPath
@@ -31,7 +31,10 @@ $InformationPreference = $(if($Testing){'Continue'}else{'SilentlyContinue'})
 if (
     $(
         [array](
-            Get-Process -Name 'java' -ErrorAction 'SilentlyContinue'
+            Get-Process -Name 'java*','jp2*' | Where-Object -FilterScript {
+                $_.'Company' -like 'Oracle*' -and
+                $_.'Path' -like '*jre*'
+            }
         )
     ).'Count' -le 0
 ) {

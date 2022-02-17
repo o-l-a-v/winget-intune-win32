@@ -1,6 +1,7 @@
 # Winget - Microsoft PowerToys - Install commands
 ## About
 * Id in Microsoft Store: XP89DCGQ3K6VLD
+  * Not using this because Microsoft Store is notorious for lagging behind on new versions because of the lengthy approval process.
 * Id in Winget: Microsoft.PowerToys
 * Winget might say update available when ```winget list --id Microsoft.PowerToys``` or ```winget upgrade```, but when ```winget upgrade --id Microsoft.PowerToys```, it says no update available.
   * Related issues:
@@ -29,10 +30,10 @@ Latest from Winget
 ## Program
 ### Install command
 #### Install
-cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && AppInstallerCLI.exe install --id XP89DCGQ3K6VLD --silent --accept-package-agreements --accept-source-agreements"
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && AppInstallerCLI.exe install --id Microsoft.PowerToys --silent --accept-package-agreements --accept-source-agreements"
 #### Upgrade
 ##### Temp workaround
-cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && AppInstallerCLI.exe install --id XP89DCGQ3K6VLD --silent --accept-package-agreements --accept-source-agreements"
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && AppInstallerCLI.exe install --id Microsoft.PowerToys --silent --accept-package-agreements --accept-source-agreements"
 ##### When issues mentioned in About section is solved
 cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && AppInstallerCLI.exe upgrade --id Microsoft.PowerToys --silent --accept-package-agreements --accept-source-agreements"
 

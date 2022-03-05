@@ -1,4 +1,9 @@
 # winget-intune-win32
+## Status
+* ```AppInstallerCLI.exe``` was renamed to ```winget.exe``` in winget v1.2, which breaks all apps in this repo installing in system context.
+* I will fix it eventually, but it has not been done yet.
+
+
 ## About
 ### This repo
 Repository containing examples of how to use winget from Intune, also in system context.
@@ -163,6 +168,7 @@ Only for apps without built-in auto update, or where auto-update requires admin 
 ### Requirements
 * Winget-cli
   * https://www.microsoft.com/en-us/store/apps/9nblggh4nns1
-* Microsoft Visual C++ v14 / 2015-2019
-  * https://aka.ms/vs/16/release/VC_redist.x64.exe
-  * https://aka.ms/vs/16/release/VC_redist.x86.exe
+* Microsoft Visual C++ v14 / 2015-2022
+  * https://aka.ms/vs/17/release/vc_redist.arm64.exe
+  * https://aka.ms/vs/17/release/VC_redist.x64.exe
+  * https://aka.ms/vs/17/release/VC_redist.x86.exe

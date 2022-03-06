@@ -4,12 +4,12 @@
         Uses Winge and PowerShell to detect whether installed, and if so to detect if newer version is available.
 
     .NOTES
-        Author:    Olav Rønnestad Birkeland
-        Created:   211120
-        Modified:  211120
+        Author:   Olav Rønnestad Birkeland
+        Created:  211120
+        Modified: 220306
 
     .EXAMPLE
-        & $psISE.CurrentFile.FullPath
+        & $psISE.CurrentFile.FullPath; $LASTEXITCODE
 #>
 
 
@@ -25,10 +25,35 @@ $InformationPreference = 'Continue'
 
 # Assets
 ## Scenario specific
-$WingetId        = [string] 'Microsoft.dotnetRuntime.3-x64'
+$WingetPackageId = [string] 'Microsoft.dotnetRuntime.3-x64'
 
-## Generic
-$WingetPushdPath = [string] '{0}\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe' -f $env:ProgramW6432
+## Find winget-cli
+### Find directory
+$WingetDirectory = [string](
+    $(
+        if ([System.Security.Principal.WindowsIdentity]::GetCurrent().'User'.'Value' -eq 'S-1-5-18') {
+            (Get-Item -Path ('{0}\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe' -f $env:ProgramW6432)).'FullName' | Select-Object -First 1                
+        }
+        else {
+            '{0}\Microsoft\WindowsApps' -f $env:LOCALAPPDATA
+        }
+    )
+)
+### Find file name
+$WingetCliFileName = [string](
+    $(
+        [string[]](
+            'AppInstallerCLI.exe',
+            'winget.exe'
+        )
+    ).Where{
+        [System.IO.File]::Exists(
+            ('{0}\{1}' -f $WingetDirectory, $_)
+        )
+    } | Select-Object -First 1
+)
+### Combine and file name
+$WingetCliPath = [string] '{0}\{1}' -f $WingetDirectory, $WingetCliFileName
 
 
 # Check installed version and exit accordingly
@@ -51,8 +76,7 @@ if (-not $Installed) {
 
 
 # Check if newer version available
-Set-Location -Path $WingetPushdPath
-$WingetResult = [string[]](cmd /c ('AppInstallerCLI.exe list {0}'-f$WingetId))
+$WingetResult = [string[]](cmd /c ('"{0}" list --id {1} --accept-source-agreements'-f $WingetCliPath, $WingetPackageId))
 
 
 # Check if update was available, exit 0 if not

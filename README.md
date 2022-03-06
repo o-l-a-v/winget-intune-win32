@@ -166,9 +166,8 @@ Only for apps without built-in auto update, or where auto-update requires admin 
 
 
 ### Requirements
-* Winget-cli
+* winget-cli
   * https://www.microsoft.com/en-us/store/apps/9nblggh4nns1
-* Microsoft Visual C++ v14 / 2015-2022
-  * https://aka.ms/vs/17/release/vc_redist.arm64.exe
-  * https://aka.ms/vs/17/release/VC_redist.x64.exe
-  * https://aka.ms/vs/17/release/VC_redist.x86.exe
+* winget-cli requirements
+  * https://github.com/microsoft/winget-cli#installing-the-client
+  * https://github.com/microsoft/winget-cli/blob/master/doc/troubleshooting/README.md  

@@ -6,7 +6,7 @@
     .NOTES
         Author:   Olav Rønnestad Birkeland
         Created:  211120
-        Modified: 211201
+        Modified: 220306
 
     .EXAMPLE
         & $psISE.CurrentFile.FullPath; $LASTEXITCODE
@@ -26,21 +26,35 @@ $InformationPreference = 'Continue'
 # Assets
 ## Scenario specific
 $FileDetectPath  = [string] '{0}\7-Zip\7z.exe' -f $env:ProgramW6432
-$WingetId        = [string] '7zip.7zip'
+$WingetPackageId = [string] '7zip.7zip'
 
-## Generic
-$WingetCliPath = [string](
+## Find winget-cli
+### Find directory
+$WingetDirectory = [string](
     $(
         if ([System.Security.Principal.WindowsIdentity]::GetCurrent().'User'.'Value' -eq 'S-1-5-18') {
-            '{0}\AppInstallerCLI.exe' -f (
-                (Get-Item -Path ('{0}\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe' -f $env:ProgramW6432)).'FullName' | Select-Object -First 1
-            )
+            (Get-Item -Path ('{0}\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe' -f $env:ProgramW6432)).'FullName' | Select-Object -First 1                
         }
         else {
-            '{0}\Microsoft\WindowsApps\winget.exe' -f $env:LOCALAPPDATA
+            '{0}\Microsoft\WindowsApps' -f $env:LOCALAPPDATA
         }
     )
 )
+### Find file name
+$WingetCliFileName = [string](
+    $(
+        [string[]](
+            'AppInstallerCLI.exe',
+            'winget.exe'
+        )
+    ).Where{
+        [System.IO.File]::Exists(
+            ('{0}\{1}' -f $WingetDirectory, $_)
+        )
+    } | Select-Object -First 1
+)
+### Combine and file name
+$WingetCliPath = [string] '{0}\{1}' -f $WingetDirectory, $WingetCliFileName
 
 
 # Check if installed, exit 0 if not
@@ -58,7 +72,7 @@ if (-not [System.IO.File]::Exists($WingetCliPath)) {
 
 
 # Check if update available with Winget
-$WingetResult = [string[]](cmd /c ('"{0}" list --id {1}' -f $WingetCliPath, $WingetId))
+$WingetResult = [string[]](cmd /c ('"{0}" list --id {1} --accept-source-agreements'-f $WingetCliPath, $WingetPackageId))
 
 
 # View output from Winget

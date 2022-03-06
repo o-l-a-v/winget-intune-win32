@@ -18,7 +18,7 @@ Latest from Winget
 
 ## Program
 ### Install command
-cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && AppInstallerCLI.exe install --id Lenovo.SystemUpdate --silent --accept-package-agreements --accept-source-agreements"
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe install --id Lenovo.SystemUpdate --silent --accept-package-agreements --accept-source-agreements"
 
 ### Uninstall command
 "%ProgramFiles(x86)%\Lenovo\System Update\unins000.exe" /VERYSILENT /NORESTART /SUPPRESSMSGBOXES /DELETE

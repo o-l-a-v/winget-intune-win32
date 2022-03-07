@@ -2,6 +2,10 @@
 ## About
 * Winget id: GitHub.GitHubDesktop
 * Autoupdates in user context, so no need for update logic.
+* Squirrel installer creates desktop shortcut that is hard to get rid of.
+  * No install parameter for skip creating desktop shortcut.
+  * GitHub Desktop is not actually finished installing when winget-cli says it is.
+  * Creates desktop shortcut, to ```%OneDriveCommercial%``` is using OneDrive for Business known folder move.
 
 
 ## App information
@@ -20,7 +24,7 @@ Latest from Winget
 
 ## Program
 ### Install command
-cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe install --id GitHub.GitHubDesktop --silent --accept-package-agreements --accept-source-agreements"
+cmd /c ""%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe" install --id GitHub.GitHubDesktop --silent --accept-package-agreements --accept-source-agreements"
 
 ### Uninstall command
 cmd /c "echo "Not added yet.""

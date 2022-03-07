@@ -6,7 +6,7 @@
     .NOTES
         Author:   Olav Rønnestad Birkeland
         Created:  220305
-        Modified: 220305
+        Modified: 220307
 
     .EXAMPLE
         & $psISE.CurrentFile.FullPath
@@ -14,7 +14,7 @@
 
 
 # Input parameters
-[OuputType([bool])]
+[OutputType([bool])]
 Param()
 
 

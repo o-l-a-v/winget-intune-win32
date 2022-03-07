@@ -6,7 +6,7 @@
     .NOTES
         Author:   Olav Rønnestad Birkeland
         Created:  211120
-        Modified: 220306
+        Modified: 220307
 
     .EXAMPLE
         & $psISE.CurrentFile.FullPath; $LASTEXITCODE
@@ -69,6 +69,11 @@ if (-not [System.IO.File]::Exists($WingetCliPath)) {
     Write-Output -InputObject 'Did not find Winget.'
     Exit 0
 }
+
+
+# Fix winget output encoding
+$null = cmd /c '' # Workaround for PowerShell ISE "Exception setting "OutputEncoding": "The handle is invalid.""
+$Global:OutputEncoding = [Console]::InputEncoding = [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new()
 
 
 # Check if update available with Winget

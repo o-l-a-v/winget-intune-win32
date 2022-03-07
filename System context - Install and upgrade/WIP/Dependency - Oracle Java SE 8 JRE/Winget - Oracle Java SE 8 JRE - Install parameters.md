@@ -25,7 +25,7 @@ Latest from Winget
 ## Program
 ### Install command
 #### Install and upgrade
-cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && AppInstallerCLI.exe install --id Oracle.JavaRuntimeEnvironment --override "/s INSTALLDIR=\"%ProgramW6432%\Oracle\Java SE 8 JRE\" AUTO_UPDATE=0 STATIC=0 REBOOT=0 REMOVEOUTOFDATEJRES=1 SPONSORS=0 WEB_JAVA=1" --accept-package-agreements --accept-source-agreements"
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe install --id Oracle.JavaRuntimeEnvironment --override "/s INSTALLDIR=\"%ProgramW6432%\Oracle\Java SE 8 JRE\" AUTO_UPDATE=0 STATIC=0 REBOOT=0 REMOVEOUTOFDATEJRES=1 SPONSORS=0 WEB_JAVA=1" --accept-package-agreements --accept-source-agreements"
 
 ### Uninstall command
 cmd /c "echo "Not added yet.""

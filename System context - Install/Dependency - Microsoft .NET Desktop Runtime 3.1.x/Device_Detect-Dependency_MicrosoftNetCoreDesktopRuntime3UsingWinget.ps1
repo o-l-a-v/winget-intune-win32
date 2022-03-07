@@ -6,7 +6,7 @@
     .NOTES
         Author:   Olav Rønnestad Birkeland
         Created:  211120
-        Modified: 220306
+        Modified: 220307
 
     .EXAMPLE
         & $psISE.CurrentFile.FullPath; $LASTEXITCODE
@@ -56,35 +56,38 @@ $WingetCliFileName = [string](
 $WingetCliPath = [string] '{0}\{1}' -f $WingetDirectory, $WingetCliFileName
 
 
-# Check installed version and exit accordingly
-$Installed = [bool](
-    $(   
-        [array](
-            Get-ChildItem -Path 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall'
-        )
-    ).Where{
-        $_.GetValue('DisplayName') -like '*Desktop Runtime*' -and $_.GetValue('DisplayVersion') -like '3.1.*'
-    }.'Count' -ge 1
-)
-
-
-# If not installed, exit 1
-if (-not $Installed) {
-    Write-Error -ErrorAction 'Continue' -Exception 'Not installed.' -Message 'Not installed.'
-    Exit 1
+# Check if $WingetCli exists
+if (-not [System.IO.File]::Exists($WingetCliPath)) {
+    Write-Output -InputObject 'Did not find Winget.'
+    Exit 0
 }
 
 
-# Check if newer version available
+# Fix winget output encoding
+$null = cmd /c '' # Workaround for PowerShell ISE "Exception setting "OutputEncoding": "The handle is invalid.""
+$Global:OutputEncoding = [Console]::InputEncoding = [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new()
+
+
+# Check if update available with Winget
 $WingetResult = [string[]](cmd /c ('"{0}" list --id {1} --accept-source-agreements'-f $WingetCliPath, $WingetPackageId))
 
 
+# View output from Winget
+Write-Information -MessageData ($WingetResult[-3 .. -1] -join [System.Environment]::NewLine)
+
+
 # Check if update was available, exit 0 if not
-if ($WingetResult[-3] -like '*available*') {
-    Write-Error -ErrorAction 'Continue' -Exception 'Update available.' -Message 'Update available.'
-    Exit 1
+if ($WingetResult[-1] -like ('*{0}*' -f $WingetPackageId)) {
+    if ($WingetResult[-3] -like '*available*') {
+        Write-Error -ErrorAction 'Continue' -Exception 'Installed, but update available.' -Message 'Installed, but update available.'
+        Exit 1
+    }
+    else {
+        Write-Output -InputObject 'Installed and no update available.'
+        Exit 0
+    }
 }
 else {
-    Write-Output -InputObject 'No update available.'
-    Exit 0
+    Write-Error -ErrorAction 'Continue' -Exception 'Not installed.' -Message 'Not installed.'
+    Exit 1
 }

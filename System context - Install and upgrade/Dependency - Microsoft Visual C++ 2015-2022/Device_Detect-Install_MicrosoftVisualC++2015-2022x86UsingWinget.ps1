@@ -6,7 +6,7 @@
     .NOTES
         Author:   Olav Rønnestad Birkeland
         Created:  220121
-        Modified: 220121
+        Modified: 220307
 
     .EXAMPLE
         & $psISE.CurrentFile.FullPath; $LASTEXITCODE
@@ -29,29 +29,36 @@ $Global:OutputEncoding = [Console]::InputEncoding = [Console]::OutputEncoding = 
 
 
 # Assets
-$WingetId = [string] 'Microsoft.VC++2015-2022Redist-x86'
+## Scenario specific
+$WingetPackageId = [string] 'Microsoft.VC++2015-2022Redist-x86'
 
-
-# Winget
-## Set $WingetCliPath
-$WingetCliPath = [string](
+## Find winget-cli
+### Find directory
+$WingetDirectory = [string](
     $(
         if ([System.Security.Principal.WindowsIdentity]::GetCurrent().'User'.'Value' -eq 'S-1-5-18') {
-            '{0}\AppInstallerCLI.exe' -f (
-                (Get-Item -Path ('{0}\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe' -f $env:ProgramW6432)).'FullName' | Select-Object -First 1
-            )
+            (Get-Item -Path ('{0}\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe' -f $env:ProgramW6432)).'FullName' | Select-Object -First 1                
         }
         else {
-            '{0}\Microsoft\WindowsApps\winget.exe' -f $env:LOCALAPPDATA
+            '{0}\Microsoft\WindowsApps' -f $env:LOCALAPPDATA
         }
     )
 )
-
-## Check if $WingetCli exists
-if (-not [System.IO.File]::Exists($WingetCliPath)) {
-    Write-Output -InputObject 'Did not find Winget.'
-    Exit 0
-}
+### Find file name
+$WingetCliFileName = [string](
+    $(
+        [string[]](
+            'AppInstallerCLI.exe',
+            'winget.exe'
+        )
+    ).Where{
+        [System.IO.File]::Exists(
+            ('{0}\{1}' -f $WingetDirectory, $_)
+        )
+    } | Select-Object -First 1
+)
+### Combine and file name
+$WingetCliPath = [string] '{0}\{1}' -f $WingetDirectory, $WingetCliFileName
 
 ## Check installed version
 Write-Information -MessageData '# winget --version'
@@ -60,7 +67,7 @@ Write-Information -MessageData (cmd /c ('"{0}" --version' -f $WingetCliPath))
 
 ## Check if installed with Winget
 ### Winget list
-$WingetListCommand = [string] '"{0}" list --id {1} --accept-source-agreements' -f $WingetCliPath, $WingetId
+$WingetListCommand = [string] '"{0}" list --id {1} --accept-source-agreements' -f $WingetCliPath, $WingetPackageId
 $WingetList = [string[]](
     cmd /c $WingetListCommand | Where-Object -FilterScript {
         $_ -like ('*{0}*' -f $WingetId)
@@ -81,7 +88,7 @@ else {
 ### Winget upgrade
 $WingetUpgrade = [string[]](
     cmd /c ('"{0}" upgrade' -f $WingetCliPath) | Where-Object -FilterScript {
-        $_ -like ('*{0}*' -f $WingetId)
+        $_ -like ('*{0}*' -f $WingetPackageId)
     }
 )
 ### View

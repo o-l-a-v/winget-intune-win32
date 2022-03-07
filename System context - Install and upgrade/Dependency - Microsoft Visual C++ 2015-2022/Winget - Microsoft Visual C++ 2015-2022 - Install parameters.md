@@ -27,9 +27,9 @@ Latest from Winget
 ## Program
 ### Install command
 #### x64 (both install and upgrade)
-cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && AppInstallerCLI.exe install --id Microsoft.VC++2015-2022Redist-x64 --silent --accept-package-agreements --accept-source-agreements"
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe install --id Microsoft.VC++2015-2022Redist-x64 --silent --accept-package-agreements --accept-source-agreements"
 #### x86 (both install and upgrade)
-cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && AppInstallerCLI.exe install --id Microsoft.VC++2015-2022Redist-x86 --silent --accept-package-agreements --accept-source-agreements"
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe install --id Microsoft.VC++2015-2022Redist-x86 --silent --accept-package-agreements --accept-source-agreements"
 
 ### Uninstall command
 cmd /c "echo "Not added yet.""

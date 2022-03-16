@@ -1,6 +1,6 @@
-# Winget - GitHub Desktop - Install parameters
+# Winget - Authy Desktop - Install parameters
 ## About
-* Winget id: ```GitHub.GitHubDesktop```.
+* Winget id: ```Twilio.Authy```.
 * Autoupdates in user context, so no need for update logic.
 * Squirrel installer creates desktop shortcut that is hard to get rid of.
   * No install parameter for skip creating desktop shortcut.
@@ -10,13 +10,13 @@
 
 ## App information
 ### Name
-GitHub Desktop
+Authy Desktop
 
 ### Description
-GitHub Desktop
+Authy Desktop
 
 ### Publisher
-Microsoft, GitHub
+Twilio
 
 ### App version
 Latest from Winget
@@ -24,7 +24,7 @@ Latest from Winget
 
 ## Program
 ### Install command
-cmd /c ""%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe" install --id GitHub.GitHubDesktop --silent --accept-package-agreements --accept-source-agreements"
+cmd /c ""%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe" install --id Twilio.Authy --silent --accept-package-agreements --accept-source-agreements"
 
 ### Uninstall command
 cmd /c "echo "Not added yet.""
@@ -39,8 +39,8 @@ User
 
 
 ## Detection
-Path:  %LOCALAPPDATA%\GitHubDesktop
-File:  GitHubDesktop.exe
+Path:  %LOCALAPPDATA%\authy
+File:  Authy Desktop.exe
 Logic: Exists
 
 

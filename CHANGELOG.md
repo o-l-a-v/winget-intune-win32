@@ -2,6 +2,18 @@
 ## About
 * Will only list major changes here.
 
+
+## 220307
+* Simplified common requirement script that checks minimum version of App Installer / Winget.exe.
+* Added two custom user context apps:
+  * 1Password
+  * Zoom
+* Added some user context winget apps:
+  * Authy Desktop
+  * Discord
+  * Postman
+
+
 ## 220307
 * Fixed breaking change when winget v1.2 renamed ```AppInstallerCLI.exe``` to ```winget.exe```.
   * Only affected apps from system context, which means most in this repo.

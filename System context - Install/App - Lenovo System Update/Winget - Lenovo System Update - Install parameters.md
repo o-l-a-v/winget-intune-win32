@@ -6,7 +6,7 @@ Lenovo System Update
 ### Description
 Installs Lenovo System Update (LSU).
 
-* ** Please do not install this application unless instructed by OBOS IT.**
+* ** Please do not install this application unless instructed by IT support.**
 * ** Drivers and similar are supposed to be delivered by Windows Update.**
 
 ### Publisher

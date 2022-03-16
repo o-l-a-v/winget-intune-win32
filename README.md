@@ -158,6 +158,8 @@ Only for apps without built-in auto update, or where auto-update requires admin 
 #### By others
 * [Oliver Kieselbach](https://oliverkieselbach.com/) [IntuneWinAppUtilDecoder](https://github.com/okieselbach/Intune/tree/master/IntuneWinAppUtilDecoder)
 * [Simeon Cloud](https://www.simeoncloud.com/) [IntuneAppBuilder](https://github.com/simeoncloud/IntuneAppBuilder)
+* [IconViewer](https://www.botproductions.com/iconview/download.html)
+  * To extract icons from EXE files.
 
 
 ### Requirements

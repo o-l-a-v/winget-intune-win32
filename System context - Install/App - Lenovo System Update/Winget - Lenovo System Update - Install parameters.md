@@ -8,6 +8,8 @@ Installs Lenovo System Update (LSU).
 
 * ** Please do not install this application unless instructed by IT support.**
 * ** Drivers and similar are supposed to be delivered by Windows Update.**
+* If you get "Requirements not met", open Microsoft Store, go to "Library", and "Check for updates".
+  * Must have latest version of the Microsoft app "App Installer".
 
 ### Publisher
 Lenovo

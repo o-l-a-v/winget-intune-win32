@@ -1,10 +1,15 @@
-# Winget - Microsoft .NET Desktop Runtime 3.1.x x64 - Install parameters.md
+# Winget - Microsoft .NET Core Desktop Runtime 3.1.x x64 - Install parameters.md
+## About
+* Id in Winget: ```Microsoft.dotnetRuntime.3-x64```.
+* Kept up to date by Windows Update.
+
+
 ## App information
 ### Name
-Dependency - Microsoft .NET Desktop Runtime 3.1.x x64
+Dependency - Microsoft .NET Core Desktop Runtime 3.1.x x64
 
 ### Descripotion
-Microsoft .NET Desktop Runtime 3.1.x x64
+Microsoft .NET Desktop Core Runtime 3.1.x x64
 
 ### Publisher
 Microsoft

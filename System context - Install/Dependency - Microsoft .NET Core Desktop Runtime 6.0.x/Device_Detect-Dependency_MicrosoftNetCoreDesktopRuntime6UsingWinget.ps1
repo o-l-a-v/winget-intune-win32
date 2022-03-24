@@ -1,12 +1,12 @@
 ﻿#Requires -Version 5.1
 <#
     .SYNOPSIS
-        Uses Winge and PowerShell to detect whether installed, and if so to detect if newer version is available.
+        Uses Winget and PowerShell to detect whether installed, and if so to detect if newer version is available.
 
     .NOTES
         Author:   Olav Rønnestad Birkeland
-        Created:  211120
-        Modified: 220307
+        Created:  220324
+        Modified: 220324
 
     .EXAMPLE
         & $psISE.CurrentFile.FullPath; $LASTEXITCODE
@@ -25,7 +25,7 @@ $InformationPreference = 'Continue'
 
 # Assets
 ## Scenario specific
-$WingetPackageId = [string] 'Microsoft.dotnetRuntime.3-x64'
+$WingetPackageId = [string] 'Microsoft.dotnetRuntime.6-x64'
 
 ## Find winget-cli
 ### Find directory

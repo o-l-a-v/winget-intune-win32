@@ -6,7 +6,7 @@
     .NOTES
         Author:   Olav Rønnestad Birkeland
         Created:  211201
-        Modified: 220307
+        Modified: 220328
 
     .EXAMPLE
         & $psISE.CurrentFile.FullPath; $LASTEXITCODE
@@ -57,17 +57,17 @@ $WingetCliFileName = [string](
 $WingetCliPath = [string] '{0}\{1}' -f $WingetDirectory, $WingetCliFileName
 
 
-# Check if installed, exit 0 if not
+# Check for things that should return exit code 1 to show correts stats in Intune. The Win32 requirement rules should take care of these scenarios.
+## Check if installed, exit 1 if not
 if (-not [System.IO.File]::Exists($FileDetectPath)) {
     Write-Output -InputObject 'Not installed, so no upgrade available.'
-    Exit 0
+    Exit 1
 }
 
-
-# Check if $WingetCli exists
+## Check if $WingetCli exists, exit 1 if not
 if (-not [System.IO.File]::Exists($WingetCliPath)) {
     Write-Output -InputObject 'Did not find Winget.'
-    Exit 0
+    Exit 1
 }
 
 

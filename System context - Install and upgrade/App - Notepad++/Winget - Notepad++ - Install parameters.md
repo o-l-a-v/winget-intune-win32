@@ -1,6 +1,6 @@
 # Winget - Notepad++ - Install parameters
 ## About
-* Winget id: Notepad++.Notepad++
+* Winget id: ```Notepad++.Notepad++```.
 
 
 ## App information

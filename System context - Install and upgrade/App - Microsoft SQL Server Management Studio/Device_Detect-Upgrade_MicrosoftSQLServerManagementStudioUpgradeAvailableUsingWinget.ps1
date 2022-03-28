@@ -1,12 +1,12 @@
 ﻿#Requires -Version 5.1
 <#
     .SYNOPSIS
-        Uses Winget to see if a new version is available for KeePass.
+        Uses Winget to see if a new version is available for Microsoft SQL Server Management Studio.
 
     .NOTES
         Author:   Olav Rønnestad Birkeland
-        Created:  220109
-        Modified: 220307
+        Created:  220328
+        Modified: 220328
 
     .EXAMPLE
         & $psISE.CurrentFile.FullPath; $LASTEXITCODE
@@ -25,8 +25,8 @@ $InformationPreference = 'Continue'
 
 # Assets
 ## Scenario specific
-$FileDetectPath  = [string] '{0}\KeePass2x\KeePass.exe' -f ${env:ProgramFiles(x86)}
-$WingetPackageId = [string] 'DominikReichl.KeePass'
+$FileDetectPath  = [string] '{0}\Microsoft SQL Server Management Studio 18\Common7\IDE\Ssms.exe' -f ${env:ProgramFiles(x86)}
+$WingetPackageId = [string] 'Microsoft.SQLServerManagementStudio'
 
 ## Find winget-cli
 ### Find directory
@@ -57,17 +57,17 @@ $WingetCliFileName = [string](
 $WingetCliPath = [string] '{0}\{1}' -f $WingetDirectory, $WingetCliFileName
 
 
-# Check if installed, exit 0 if not
+# Check for things that should return exit code 1 to show correts stats in Intune. The Win32 requirement rules should take care of these scenarios.
+## Check if installed, exit 1 if not
 if (-not [System.IO.File]::Exists($FileDetectPath)) {
     Write-Output -InputObject 'Not installed, so no upgrade available.'
-    Exit 0
+    Exit 1
 }
 
-
-# Check if $WingetCli exists
+## Check if $WingetCli exists, exit 1 if not
 if (-not [System.IO.File]::Exists($WingetCliPath)) {
     Write-Output -InputObject 'Did not find Winget.'
-    Exit 0
+    Exit 1
 }
 
 

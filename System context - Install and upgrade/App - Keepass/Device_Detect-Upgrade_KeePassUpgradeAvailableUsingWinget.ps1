@@ -1,11 +1,11 @@
 ﻿#Requires -Version 5.1
 <#
     .SYNOPSIS
-        Uses Winget to see if a new version is available for Git.
+        Uses Winget to see if a new version is available for KeePass.
 
     .NOTES
         Author:   Olav Rønnestad Birkeland
-        Created:  211124
+        Created:  220109
         Modified: 220328
 
     .EXAMPLE
@@ -25,8 +25,8 @@ $InformationPreference = 'Continue'
 
 # Assets
 ## Scenario specific
-$FileDetectPath  = [string] '{0}\Git\git-bash.exe' -f $env:ProgramW6432
-$WingetPackageId = [string] 'Git.Git'
+$FileDetectPath  = [string] '{0}\KeePass2x\KeePass.exe' -f ${env:ProgramFiles(x86)}
+$WingetPackageId = [string] 'DominikReichl.KeePass'
 
 ## Find winget-cli
 ### Find directory

@@ -96,10 +96,10 @@ Only for apps without built-in auto update, or where auto-update requires admin 
 * Remove need for admin permissions for end users.
 
 #### End users ease of use
-* Make everything and app that:
-  * Does not require admin for install and update.
-  * Can be installed from a central store, even though an app is not in Microsoft Store yet.
-  * Autoupdates, even though it does not have such functionality built in, or if such functionality requires admin permissions.
+Make everything and app that
+* Does not require admin for install and update.
+* Can be installed from a central store, even though an app is not in Microsoft Store yet.
+* Autoupdates, even though it does not have such functionality built in, or if such functionality requires admin permissions.
 
 #### Flexibility
 * Use Winget how you want, with whatever logic and mechanisms you want.
@@ -112,13 +112,30 @@ Only for apps without built-in auto update, or where auto-update requires admin 
 
 
 ### Why not
-#### Bandwidth
-* Does not utilize Delivery Optimization like packaging installers inside .intunewin does.
+#### Network bandwidth
+Does not support local caching or peer to peer, like Intune Win32 apps does.
+
+Apparently, Winget supports Delivery Optimization, but only "HTTP Downloader".
+* https://docs.microsoft.com/en-us/windows/deployment/do/waas-delivery-optimization#windows-client
+Not "Peer to Peer" or "Microsoft Connected Cache (MCC)".
+
+References:
+* Winget-Cli feature
+  * https://github.com/microsoft/winget-cli/issues/151
+* Winget-Cli settings
+  * https://docs.microsoft.com/en-us/windows/package-manager/winget/settings#downloader
+  * https://github.com/microsoft/winget-cli/blob/master/doc/Settings.md#downloader
+* Delivery Optimization
+  * https://docs.microsoft.com/en-us/windows/deployment/do/whats-new-do
+* Microsoft Connected Cache (MCC)
+  * https://docs.microsoft.com/en-us/windows/deployment/do/waas-delivery-optimization
+  * https://oliverkieselbach.com/2020/03/07/delivery-optimization-with-intune-and-microsoft-connected-cache-mcc/
 
 #### Security
-* Winget default package manifest is public and open source manifest, so far without good controls for:
-  * Authenticity
-    * https://github.com/microsoft/winget-pkgs/issues/7836
+Winget default package manifest is public and open source manifest, so far without good controls for:
+* Authenticity
+  * https://github.com/microsoft/winget-pkgs/issues/7836
+  * https://github.com/microsoft/winget-pkgs/issues/100
 
 #### Reliability
 * Winget default package manifest is public and open source manifest, without any guarantees or SLAs.

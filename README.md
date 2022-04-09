@@ -116,12 +116,16 @@ Make everything and app that
 Does not support local caching or peer to peer, like Intune Win32 apps does.
 
 Apparently, Winget supports Delivery Optimization, but only "HTTP Downloader".
+
 * https://docs.microsoft.com/en-us/windows/deployment/do/waas-delivery-optimization#windows-client
+
 Not "Peer to Peer" or "Microsoft Connected Cache (MCC)".
 
-References:
-* Winget-Cli feature
+<details><summary>More references/ information</summary>
+
+* Winget-Cli feature requests
   * https://github.com/microsoft/winget-cli/issues/151
+  * https://github.com/microsoft/winget-cli/issues/225
 * Winget-Cli settings
   * https://docs.microsoft.com/en-us/windows/package-manager/winget/settings#downloader
   * https://github.com/microsoft/winget-cli/blob/master/doc/Settings.md#downloader
@@ -131,6 +135,8 @@ References:
   * https://docs.microsoft.com/en-us/windows/deployment/do/waas-delivery-optimization
   * https://oliverkieselbach.com/2020/03/07/delivery-optimization-with-intune-and-microsoft-connected-cache-mcc/
   * https://www.petervanderwoude.nl/post/microsoft-connected-cache-in-configmgr-with-win32-apps-of-intune/
+
+</details>
 
 #### Security
 Winget default package manifest is public and open source manifest, so far without good controls for:

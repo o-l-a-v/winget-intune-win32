@@ -130,6 +130,7 @@ References:
 * Microsoft Connected Cache (MCC)
   * https://docs.microsoft.com/en-us/windows/deployment/do/waas-delivery-optimization
   * https://oliverkieselbach.com/2020/03/07/delivery-optimization-with-intune-and-microsoft-connected-cache-mcc/
+  * https://www.petervanderwoude.nl/post/microsoft-connected-cache-in-configmgr-with-win32-apps-of-intune/
 
 #### Security
 Winget default package manifest is public and open source manifest, so far without good controls for:

@@ -13,9 +13,11 @@
 #>
 
 
+
 # Input parameters
 [OutputType($null)]
 Param()
+
 
 
 # PowerShell preferences
@@ -23,14 +25,17 @@ $ErrorActionPreference = 'Stop'
 $InformationPreference = 'Continue'
 
 
+
 # Fix winget output encoding
 $null = cmd /c '' # Workaround for PowerShell ISE "Exception setting "OutputEncoding": "The handle is invalid.""
 $Global:OutputEncoding = [Console]::InputEncoding = [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new()
 
 
+
 # Assets
 ## Scenario specific
 $WingetPackageId = [string] 'Microsoft.VC++2015-2022Redist-x64'
+
 
 ## Find winget-cli
 ### Find directory
@@ -44,6 +49,7 @@ $WingetDirectory = [string](
         }
     )
 )
+
 ### Find file name
 $WingetCliFileName = [string](
     $(
@@ -57,8 +63,10 @@ $WingetCliFileName = [string](
         )
     } | Select-Object -First 1
 )
+
 ### Combine and file name
 $WingetCliPath = [string] '{0}\{1}' -f $WingetDirectory, $WingetCliFileName
+
 
 ## Check installed version
 Write-Information -MessageData '# winget --version'
@@ -73,9 +81,11 @@ $WingetList = [string[]](
         $_ -like ('*{0}*' -f $WingetPackageId)
     }
 )
+
 ### View
 Write-Information -MessageData ('# {0}' -f $WingetListCommand)
 Write-Information -MessageData ($WingetList -join [System.Environment]::NewLine)
+
 ### Exit if not installed
 if ($WingetList.'Count' -le 0) {
     Write-Error -ErrorAction 'Continue' -Exception 'Not installed.' -Message 'Not installed.'
@@ -84,6 +94,8 @@ if ($WingetList.'Count' -le 0) {
 else {
     Write-Information -MessageData 'Installed.'
 }
+
+
 ## Check if upgrade available
 ### Winget upgrade
 $WingetUpgrade = [string[]](
@@ -91,9 +103,11 @@ $WingetUpgrade = [string[]](
         $_ -like ('*{0}*' -f $WingetPackageId)
     }
 )
+
 ### View
 Write-Information -MessageData ('# winget upgrade')
 Write-Information -MessageData ($WingetUpgrade -join [System.Environment]::NewLine)
+
 ### Check if update was available, exit 0 if not
 if ($WingetUpgrade.'Count' -gt 0) {
     Write-Error -ErrorAction 'Continue' -Exception 'Update available.' -Message 'Update available.'

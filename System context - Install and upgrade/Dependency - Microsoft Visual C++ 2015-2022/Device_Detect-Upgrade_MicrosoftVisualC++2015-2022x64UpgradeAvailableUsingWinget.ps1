@@ -36,6 +36,7 @@ $Global:OutputEncoding = [Console]::InputEncoding = [Console]::OutputEncoding = 
 ## Scenario specific
 $WingetPackageId = [string] 'Microsoft.VC++2015-2022Redist-x64'
 
+
 ## Find winget-cli
 ### Find directory
 $WingetDirectory = [string](
@@ -48,6 +49,7 @@ $WingetDirectory = [string](
         }
     )
 )
+
 ### Find file name
 $WingetCliFileName = [string](
     $(
@@ -61,10 +63,12 @@ $WingetCliFileName = [string](
         )
     } | Select-Object -First 1
 )
+
 ### Combine and file name
 $WingetCliPath = [string] '{0}\{1}' -f $WingetDirectory, $WingetCliFileName
 
-## Check installed version
+
+## Check Winget version
 Write-Information -MessageData '# winget --version'
 Write-Information -MessageData (cmd /c ('"{0}" --version' -f $WingetCliPath))
 

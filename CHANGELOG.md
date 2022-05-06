@@ -2,6 +2,12 @@
 ## About
 * Will only list major changes here.
 
+## 220506
+* Added programs:
+  * OBS Studio
+* Added ```--exact``` to winget commands for reliability and security.
+  * In case packages are removed in future, and winget finds a package with similar id.
+
 
 ## 220328
 * Added programs:

@@ -24,7 +24,7 @@ Latest from Winget
 
 ## Program
 ### Install command
-cmd /c ""%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe" install --id Discord.Discord --silent --accept-package-agreements --accept-source-agreements && powershell -c ([System.IO.File]::Delete(('{0}\Discord.lnk'-f[System.Environment]::GetFolderPath('Desktop'))))"
+cmd /c ""%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe" install --exact --id Discord.Discord --silent --accept-package-agreements --accept-source-agreements && powershell -c ([System.IO.File]::Delete(('{0}\Discord.lnk'-f[System.Environment]::GetFolderPath('Desktop'))))"
 
 ### Uninstall command
 cmd /c ""%LOCALAPPDATA%\Discord\Update.exe" --uninstall -s"

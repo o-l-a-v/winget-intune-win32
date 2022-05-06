@@ -24,7 +24,7 @@ Latest from Winget
 
 ## Program
 ### Install command
-cmd /c ""%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe" install --id GitHub.GitHubDesktop --silent --accept-package-agreements --accept-source-agreements"
+cmd /c ""%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe" install --exact --id GitHub.GitHubDesktop --silent --accept-package-agreements --accept-source-agreements"
 
 ### Uninstall command
 cmd /c "echo "Not added yet.""

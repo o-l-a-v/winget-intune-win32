@@ -24,7 +24,7 @@ Latest from Winget
 
 ## Program
 ### Install command
-cmd /c ""%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe" install --id Postman.Postman --silent --accept-package-agreements --accept-source-agreements && powershell -c ([System.IO.File]::Delete(('{0}\Postman.lnk'-f[System.Environment]::GetFolderPath('Desktop'))))"
+cmd /c ""%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe" install --exact --id Postman.Postman --silent --accept-package-agreements --accept-source-agreements && powershell -c ([System.IO.File]::Delete(('{0}\Postman.lnk'-f[System.Environment]::GetFolderPath('Desktop'))))"
 
 ### Uninstall command
 cmd /c ""%LOCALAPPDATA%\Postman\Update.exe" --uninstall -s"

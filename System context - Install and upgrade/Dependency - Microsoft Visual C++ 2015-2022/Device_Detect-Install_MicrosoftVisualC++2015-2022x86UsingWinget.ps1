@@ -6,7 +6,7 @@
     .NOTES
         Author:   Olav Rønnestad Birkeland
         Created:  220121
-        Modified: 220504
+        Modified: 220506
 
     .EXAMPLE
         & $psISE.CurrentFile.FullPath; $LASTEXITCODE
@@ -75,7 +75,7 @@ Write-Information -MessageData (cmd /c ('"{0}" --version' -f $WingetCliPath))
 
 ## Check if installed with Winget
 ### Winget list
-$WingetListCommand = [string] '"{0}" list --id {1} --accept-source-agreements' -f $WingetCliPath, $WingetPackageId
+$WingetListCommand = [string] '"{0}" list --exact --id {1} --accept-source-agreements' -f $WingetCliPath, $WingetPackageId
 $WingetList = [string[]](
     cmd /c $WingetListCommand | Where-Object -FilterScript {
         $_ -like ('*{0}*' -f $WingetPackageId)

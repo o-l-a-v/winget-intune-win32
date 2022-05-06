@@ -1,11 +1,11 @@
 ﻿#Requires -Version 5.1
 <#
     .SYNOPSIS
-        Uses Winget and PowerShell to detect whether installed, and if so to detect if newer version is available.
+        Uses Winget to see if a new version is available for Microsoft SQL Server Management Studio.
 
     .NOTES
         Author:   Olav Rønnestad Birkeland
-        Created:  220324
+        Created:  220506
         Modified: 220506
 
     .EXAMPLE
@@ -25,7 +25,8 @@ $InformationPreference = 'Continue'
 
 # Assets
 ## Scenario specific
-$WingetPackageId = [string] 'Microsoft.dotnetRuntime.6-x64'
+$FileDetectPath  = [string] '{0}\obs-studio\bin\64bit\obs64.exe' -f $env:ProgramW6432
+$WingetPackageId = [string] 'OBSProject.OBSStudio'
 
 ## Find winget-cli
 ### Find directory
@@ -56,10 +57,17 @@ $WingetCliFileName = [string](
 $WingetCliPath = [string] '{0}\{1}' -f $WingetDirectory, $WingetCliFileName
 
 
-# Check if $WingetCli exists
+# Check for things that should return exit code 1 to show correts stats in Intune. The Win32 requirement rules should take care of these scenarios.
+## Check if installed, exit 1 if not
+if (-not [System.IO.File]::Exists($FileDetectPath)) {
+    Write-Output -InputObject 'Not installed, so no upgrade available.'
+    Exit 1
+}
+
+## Check if $WingetCli exists, exit 1 if not
 if (-not [System.IO.File]::Exists($WingetCliPath)) {
     Write-Output -InputObject 'Did not find Winget.'
-    Exit 0
+    Exit 1
 }
 
 
@@ -77,17 +85,11 @@ Write-Information -MessageData ($WingetResult[-3 .. -1] -join [System.Environmen
 
 
 # Check if update was available, exit 0 if not
-if ($WingetResult[-1] -like ('*{0}*' -f $WingetPackageId)) {
-    if ($WingetResult[-3] -like '*available*') {
-        Write-Error -ErrorAction 'Continue' -Exception 'Installed, but update available.' -Message 'Installed, but update available.'
-        Exit 1
-    }
-    else {
-        Write-Output -InputObject 'Installed and no update available.'
-        Exit 0
-    }
+if ($WingetResult[-3] -like '*available*') {
+    Write-Error -ErrorAction 'Continue' -Exception 'Update available.' -Message 'Update available.'
+    Exit 1
 }
 else {
-    Write-Error -ErrorAction 'Continue' -Exception 'Not installed.' -Message 'Not installed.'
-    Exit 1
+    Write-Output -InputObject 'No update available.'
+    Exit 0
 }

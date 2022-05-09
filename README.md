@@ -138,31 +138,50 @@ Not "Peer to Peer" or "Microsoft Connected Cache (MCC)".
 
 </details>
 
-#### Security
-Winget default package manifest is public and open source manifest, so far without good controls for:
-* Authenticity
-  * https://github.com/microsoft/winget-pkgs/issues/7836
-  * https://github.com/microsoft/winget-pkgs/issues/100
+#### Security and realibility
+* Winget default package manifest is public and open source.
+  * Reliability - Without any guarantees or SLAs.
+  * Security - So far without good controls for:
+    * Authenticity
+     * https://github.com/microsoft/winget-pkgs/issues/100
+     * https://github.com/microsoft/winget-pkgs/issues/7836
+* Prerequirements like ```winget-cli``` itself, and Microsoft Visual C++ isn't alway available on a clean OS install.  
 
-#### Reliability
-* Winget default package manifest is public and open source manifest, without any guarantees or SLAs.
-  * But more and more automation and controls are added all the time.
-* ```winget-cli``` is premature, functionality that one would expect of a package manager isn't there yet.
-  * https://github.com/microsoft/winget-cli/issues?q=is%3Aissue+is%3Aopen+sort%3Acomments-desc
-  * Examples
-    * Can't use ```winget upgrade``` to upgrade a lot of apps.
-	  * But can often use ```winget install``` as a workaround.
-	* Can't easily configure apps to exclude from ```winget upgrade --all```.
-	* Can't specify multiple IDs to install in one command.
-	* Can't override what architecture to install if multiple are available.
-	* Can't override what installer (.EXE / .MSI) to use if multiple are available.
-	* No native PowerShell support.
-  * Thus one must make a considerable amount of custom logic to handle certain apps, that might suddenly break when it gets fixed by the ```winget-cli``` project later.
-* ```winget-pkgs``` manifest still has some shortcomings.
-  * https://github.com/microsoft/winget-pkgs/issues?q=is%3Aissue+is%3Aopen+sort%3Acomments-desc
-  * Examples
-    * Can't restrict publics access to specific vendors and/ or packages.
-* Prerequirements like ```winget-cli``` and Microsoft Visual C++ isn't alway available on a clean OS install.
+#### Other shortcomings
+##### winget-cli / winget.exe
+```winget-cli``` is premature, functionality that one would expect of a package manager isn't there yet.
+* Thus one must make a considerable amount of custom logic to handle certain apps, that might suddenly break when it gets fixed by the ```winget-cli``` project later.
+  * Concrete example: ```winget.exe``` was named ```AppInstallerCLI.exe``` prior to Winget v1.2.
+
+Overview of progress:
+
+* [What's on the roadmap?](https://github.com/microsoft/winget-cli/discussions/2063)
+* [Milestones](https://github.com/microsoft/winget-cli/milestones)
+* [Issues sorted by amount of comments](https://github.com/microsoft/winget-cli/issues?q=is%3Aissue+is%3Aopen+sort%3Acomments-desc)
+
+Specific examples I've come across:
+
+* No native PowerShell support.
+  * https://github.com/microsoft/winget-cli/issues/221
+* Can't use ```winget upgrade``` to upgrade a lot of apps.
+  * But can often use ```winget install``` as a workaround.
+* Can't easily configure apps to exclude from ```winget upgrade --all```.
+  * https://github.com/microsoft/winget-cli/issues/476
+* Can't specify multiple IDs to install in one command.
+* Can't specify context (machine vs. user) with ```upgrade```.
+  * https://github.com/microsoft/winget-cli/issues/2145
+* Can't specify installer type (MSI vs. EXE) if multiple are available with ```install```, nor inside global settings.
+  * https://github.com/microsoft/winget-cli/issues/2146
+* MSI doesn't always respect ```--location```.
+  * https://github.com/microsoft/winget-cli/issues/1857
+* Can't use installers inside ZIP files.
+  * https://github.com/microsoft/winget-cli/issues/140
+* Doesn't handle change in installer type, if vendor goes from EXE to MSI for instance.
+  * https://github.com/microsoft/winget-cli/issues/1640
+
+##### winget-pkgs / Manifest
+* [Milestones](https://github.com/microsoft/winget-pkgs/milestones)
+* [Issues sorted by amount of comments](https://github.com/microsoft/winget-pkgs/issues?q=is%3Aissue+is%3Aopen+sort%3Acomments-desc)
 
 
 	

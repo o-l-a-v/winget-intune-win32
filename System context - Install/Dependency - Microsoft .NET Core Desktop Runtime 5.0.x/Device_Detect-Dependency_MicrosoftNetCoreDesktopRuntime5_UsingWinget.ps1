@@ -6,7 +6,7 @@
     .NOTES
         Author:   Olav Rønnestad Birkeland
         Created:  220324
-        Modified: 220506
+        Modified: 220516
 
     .EXAMPLE
         & $psISE.CurrentFile.FullPath; $LASTEXITCODE
@@ -25,7 +25,7 @@ $InformationPreference = 'Continue'
 
 # Assets
 ## Scenario specific
-$WingetPackageId = [string] 'Microsoft.dotnetRuntime.5-x64'
+$WingetPackageId = [string] 'Microsoft.DotNet.Runtime.5'
 
 ## Find winget-cli
 ### Find directory

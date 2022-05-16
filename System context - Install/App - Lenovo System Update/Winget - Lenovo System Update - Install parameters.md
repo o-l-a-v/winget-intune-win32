@@ -1,4 +1,9 @@
 # Winget - Lenovo System Update - Install parameters
+## About
+* Winget package id: ```Lenovo.SystemUpdate```.
+* Kept up to date by itself after initial install.
+
+
 ## App information
 ### Name
 Lenovo System Update
@@ -32,13 +37,18 @@ System
 ## Requirements
 ### General
 * 64-bit
-* >= Windows 10 1607
+* \>= Windows 10 2004 / 20H1
+
+### Script
+Require-AppInstallerMinimumVersion.ps1
+
 ### Manual -> Registry
 Path:  HKEY_LOCAL_MACHINE\HARDWARE\DESCRIPTION\System\BIOS
 Name:  SystemManufacturer
 Logic: String equals
 Value: LENOVO
 Associated with a 32-bit app on 64-bit clients: No
+
 
 ## Detection
 ### Manual -> File

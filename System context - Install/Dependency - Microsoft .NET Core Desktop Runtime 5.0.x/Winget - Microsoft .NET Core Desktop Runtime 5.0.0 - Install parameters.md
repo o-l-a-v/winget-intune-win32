@@ -1,6 +1,7 @@
 # Winget - Microsoft .NET Core Desktop Runtime 5.0.x x64 - Install parameters.md
 ## About
-* Id in Winget: ```Microsoft.dotnetRuntime.5-x64```.
+* Winget package id: ```Microsoft.DotNet.Runtime.5```.
+  * Was: ```Microsoft.dotnetRuntime.5-x64```.
 * Kept up to date by Windows Update.
 
 
@@ -20,7 +21,7 @@ Latest from Winget
 
 ## Program
 ### Install command
-cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe install --exact --id Microsoft.dotnetRuntime.5-x64 --silent --accept-package-agreements --accept-source-agreements"
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe install --exact --id Microsoft.DotNet.Runtime.5 --silent --accept-package-agreements --accept-source-agreements"
 
 ### Uninstall command
 cmd /c "echo "Not added yet.""
@@ -30,13 +31,17 @@ System
 
 
 ## Requirements
+### General
 * 64 bit
-* >= Windows 10 2004 / 20H1
+* \>= Windows 10 2004 / 20H1
+
+### Script
+Require-AppInstallerMinimumVersion.ps1
 
 
 ## Detection
 ### Script
-Device_Detect-Dependency_MicrosoftNetCoreDesktopRuntime5UsingWinget.ps1
+Device_Detect-Dependency_MicrosoftNetCoreDesktopRuntime5_UsingWinget.ps1
 
 
 ## Dependencies

@@ -3,6 +3,14 @@
 * Will only list major changes here.
 
 
+## 220516
+* Added:
+  * Microsoft Edge WebView2 Runtime
+* Changed dotnet runtimes after breaking change from Microsoft:
+  * https://github.com/dotnet/core/issues/7428
+* Renamed detection scripts using winget to have an underline before the ```UsingWinget``` part.
+
+
 ## 220506
 * Added programs:
   * OBS Studio

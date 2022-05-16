@@ -5,8 +5,8 @@
 
     .NOTES
         Author:   Olav Rønnestad Birkeland
-        Created:  211120
-        Modified: 220506
+        Created:  220516
+        Modified: 220516
 
     .EXAMPLE
         & $psISE.CurrentFile.FullPath; $LASTEXITCODE
@@ -25,7 +25,7 @@ $InformationPreference = 'Continue'
 
 # Assets
 ## Scenario specific
-$WingetPackageId = [string] 'Microsoft.dotnetRuntime.3-x64'
+$WingetPackageId = [string] 'Microsoft.EdgeWebView2Runtime'
 
 ## Find winget-cli
 ### Find directory

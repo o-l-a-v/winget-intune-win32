@@ -187,9 +187,10 @@ Specific examples I've come across:
 	
 ## Resources
 ### Similar or related projects
+* https://github.com/FlorianSLZ/Intune-Win32-Deployer
+* https://github.com/jdhitsolutions/WingetTools
 * https://github.com/Romanitho/Winget-Install
 * https://github.com/Romanitho/Winget-autoupdate
-* https://github.com/jdhitsolutions/WingetTools
 
 
 ### Tools

@@ -4,9 +4,9 @@
         Uses Winget to see if a new version is available for Microsoft SQL Server Management Studio.
 
     .NOTES
-        Author:   Olav Rønnestad Birkeland
+        Author:   Olav Rønnestad Birkeland | github.com/o-l-a-v
         Created:  220328
-        Modified: 220506
+        Modified: 221013
 
     .EXAMPLE
         & $psISE.CurrentFile.FullPath; $LASTEXITCODE
@@ -77,7 +77,7 @@ $Global:OutputEncoding = [Console]::InputEncoding = [Console]::OutputEncoding = 
 
 
 # Check if update available with Winget
-$WingetResult = [string[]](cmd /c ('"{0}" list --exact --id {1} --accept-source-agreements'-f $WingetCliPath, $WingetPackageId))
+$WingetResult = [string[]](cmd /c ('"{0}" list --exact --id {1} --source winget --accept-source-agreements'-f $WingetCliPath, $WingetPackageId))
 
 
 # View output from Winget

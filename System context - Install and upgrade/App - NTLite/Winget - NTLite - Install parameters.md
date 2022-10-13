@@ -23,12 +23,12 @@ Latest from Winget
 ## Program
 ### Install command
 #### Install
-cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe install --exact --id Nlitesoft.NTLite --silent --accept-package-agreements --accept-source-agreements"
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe install --exact --id Nlitesoft.NTLite --silent --source winget --accept-package-agreements --accept-source-agreements"
 #### Upgrade
-cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe upgrade --exact --id Nlitesoft.NTLite --silent --accept-package-agreements --accept-source-agreements"
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe upgrade --exact --id Nlitesoft.NTLite --silent --source winget --accept-package-agreements --accept-source-agreements"
 
 ### Uninstall command
-cmd /c "echo "Not added yet.""
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe uninstall --exact --id Nlitesoft.NTLite --silent --source winget --accept-source-agreements"
 
 ### Behavior
 System
@@ -66,7 +66,7 @@ Device_Detect-Upgrade_NTLiteUpgradeAvailableUsingWinget.ps1
 
 
 ## Dependencies
-None.
+Dependency - Microsoft Visual C++ 2015-2022
 
 
 ## Assignment

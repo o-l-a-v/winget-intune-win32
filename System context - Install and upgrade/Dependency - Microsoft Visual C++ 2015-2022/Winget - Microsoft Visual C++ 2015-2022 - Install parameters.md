@@ -27,12 +27,15 @@ Latest from Winget
 ## Program
 ### Install command
 #### x64 (both install and upgrade)
-cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe install --exact --id Microsoft.VC++2015-2022Redist-x64 --silent --accept-package-agreements --accept-source-agreements"
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe install --exact --id Microsoft.VC++2015-2022Redist-x64 --silent --source winget --accept-package-agreements --accept-source-agreements"
 #### x86 (both install and upgrade)
-cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe install --exact --id Microsoft.VC++2015-2022Redist-x86 --silent --accept-package-agreements --accept-source-agreements"
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe install --exact --id Microsoft.VC++2015-2022Redist-x86 --silent --source winget --accept-package-agreements --accept-source-agreements"
 
 ### Uninstall command
-cmd /c "echo "Not added yet.""
+#### x64
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe uninstall --exact --id Microsoft.VC++2015-2022Redist-x64 --silent --source winget --accept-source-agreements"
+#### x86
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe uninstall --exact --id Microsoft.VC++2015-2022Redist-x86 --silent --source winget --accept-source-agreements"
 
 ## Behavior
 System
@@ -68,6 +71,10 @@ Device_Detect-Install_MicrosoftVisualC++2015-2022x86UsingWinget.ps1
 Device_Detect-Upgrade_MicrosoftVisualC++2015-2022x64UpgradeAvailableUsingWinget.ps1
 #### x86
 Device_Detect-Upgrade_MicrosoftVisualC++2015-2022x86UpgradeAvailableUsingWinget.ps1
+
+
+## Dependencies
+Dependency - Microsoft Visual C++ 2015-2022
 
 
 ## Assignments

@@ -24,9 +24,12 @@ Latest from Winget
 
 ## Program
 ### Install command
-cmd /c ""%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe" install --exact --id Discord.Discord --silent --accept-package-agreements --accept-source-agreements && powershell -c ([System.IO.File]::Delete(('{0}\Discord.lnk'-f[System.Environment]::GetFolderPath('Desktop'))))"
+cmd /c ""%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe" install --exact --id Discord.Discord --silent --source winget --accept-package-agreements --accept-source-agreements && powershell -c ([System.IO.File]::Delete(('{0}\Discord.lnk'-f[System.Environment]::GetFolderPath('Desktop'))))"
 
 ### Uninstall command
+#### Winget
+cmd /c ""%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe" uninstall --exact --id Discord.Discord --silent --source winget --accept-source-agreements"
+#### Native
 cmd /c ""%LOCALAPPDATA%\Discord\Update.exe" --uninstall -s"
 
 ### Behavior
@@ -52,7 +55,7 @@ Value: Discord
 
 
 ## Dependencies
-None
+Dependency - Microsoft Visual C++ 2015-2022
 
 
 ## Assignment

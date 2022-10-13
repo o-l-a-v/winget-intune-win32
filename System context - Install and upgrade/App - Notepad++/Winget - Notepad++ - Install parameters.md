@@ -23,12 +23,12 @@ Latest from Winget
 ## Program
 ### Install parameters
 #### Install
-cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe install --exact --id Notepad++.Notepad++ --silent --accept-package-agreements --accept-source-agreements"
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe install --exact --id Notepad++.Notepad++ --silent --source winget --accept-package-agreements --accept-source-agreements"
 #### Upgrade
-cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe upgrade --exact --id Notepad++.Notepad++ --silent --accept-package-agreements --accept-source-agreements"
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe upgrade --exact --id Notepad++.Notepad++ --silent --source winget --accept-package-agreements --accept-source-agreements"
 
 ### Uninstall command
-cmd /c "echo "Not added yet.""
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe uninstall --exact --id Notepad++.Notepad++ --silent --source winget --accept-source-agreements"
 
 ### Behavior
 System
@@ -39,8 +39,14 @@ System
 
 ## Requirement
 ### Both
+#### General
 * 64 bit
 * >= Windows 10 2004 20H1
+#### Script
+Script: Require-AppInstallerMinimumVersion
+Type:   Boolean
+Logic:  $true means requirements were met.
+
 
 ### Upgrade
 #### Manually -> File
@@ -65,7 +71,7 @@ Device_Detect-Upgrade_Notepad++UpgradeAvailableUsingWinget.ps1
 
 
 ## Dependencies
-None.
+Dependency - Microsoft Visual C++ 2015-2022
 
 
 ## Assignments

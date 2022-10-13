@@ -4,7 +4,7 @@
         Confirms that important Java processes are not running.
 
     .NOTES
-        Author:   Olav Rønnestad Birkeland
+        Author:   Olav Rønnestad Birkeland | github.com/o-l-a-v
         Created:  220119
         Modified: 220208
 

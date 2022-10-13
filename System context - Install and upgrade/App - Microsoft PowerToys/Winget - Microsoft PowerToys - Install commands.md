@@ -30,7 +30,7 @@ Latest from Winget
 ## Program
 ### Install command
 #### Install
-cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe install --exact --id Microsoft.PowerToys --silent --accept-package-agreements --accept-source-agreements"
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe install --exact --id Microsoft.PowerToys --silent --source winget --accept-package-agreements --accept-source-agreements"
 #### Upgrade
 ##### Temp workaround
 cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe install --exact --id Microsoft.PowerToys --silent --accept-package-agreements --accept-source-agreements"
@@ -38,7 +38,7 @@ cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8
 cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe upgrade --exact --id Microsoft.PowerToys --silent --accept-package-agreements --accept-source-agreements"
 
 ### Uninstall command
-cmd /c "echo "Not added yet.""
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe uninstall --exact --id Microsoft.PowerToys --silent --source winget --accept-source-agreements"
 
 ### Behavior
 System
@@ -75,7 +75,7 @@ cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8
 
 ## Dependencies
 ### Install
-Microsoft .NET Desktop Runtime v3.1.x x64
+Microsoft .NET Desktop Runtime v6.x.x x64
 
 ### Upgrade
 None, was added when installed, and Windows Updates keeps .NET Desktop Runtime up to date.

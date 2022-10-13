@@ -4,9 +4,9 @@
         Uses Winget and PowerShell to detect whether installed, and if so to detect if newer version is available.
 
     .NOTES
-        Author:   Olav Rønnestad Birkeland
+        Author:   Olav Rønnestad Birkeland | github.com/o-l-a-v
         Created:  211120
-        Modified: 220516
+        Modified: 221013
 
     .EXAMPLE
         & $psISE.CurrentFile.FullPath; $LASTEXITCODE
@@ -25,7 +25,7 @@ $InformationPreference = 'Continue'
 
 # Assets
 ## Scenario specific
-$WingetPackageId = [string] 'Microsoft.DotNet.Runtime.3_1'
+$WingetPackageId = [string] 'Microsoft.DotNet.DesktopRuntime.3_1'
 
 ## Find winget-cli
 ### Find directory
@@ -69,7 +69,7 @@ $Global:OutputEncoding = [Console]::InputEncoding = [Console]::OutputEncoding = 
 
 
 # Check if update available with Winget
-$WingetResult = [string[]](cmd /c ('"{0}" list --exact --id {1} --accept-source-agreements'-f $WingetCliPath, $WingetPackageId))
+$WingetResult = [string[]](cmd /c ('"{0}" list --exact --id {1} --source winget --accept-source-agreements'-f $WingetCliPath, $WingetPackageId))
 
 
 # View output from Winget

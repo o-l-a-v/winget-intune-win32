@@ -4,7 +4,7 @@
         Installs 1Password in user context.
 
     .NOTES
-        Author:   Olav Rønnestad Birkeland
+        Author:   Olav Rønnestad Birkeland | github.com/o-l-a-v
         Created:  220316
         Modified: 220316
 
@@ -27,6 +27,12 @@ $Uri = [string] 'https://downloads.1password.com/win/1PasswordSetup-latest.exe'
 $Arguments = [string[]]('--silent')
 $DownloadPath = [string] '{0}\{1}' -f $env:TEMP, $Uri.Split('/')[-1]
 $DetectionPath = [string] '{0}\1Password\app\8\1Password.exe' -f $env:LOCALAPPDATA
+
+
+# Settings
+if ([System.Net.ServicePointManager]::SecurityProtocol.ToString() -ne 'Tls12') {
+    [System.Net.ServicePointManager]::SecurityProtocol = 'Tls12'
+}
 
 
 # Check if installed already

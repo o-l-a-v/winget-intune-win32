@@ -4,7 +4,7 @@
         Detects whether XnView MP runs, returns $false if it does.
 
     .NOTES
-        Author:   Olav Rønnestad Birkeland
+        Author:   Olav Rønnestad Birkeland | github.com/o-l-a-v
         Created:  211124
         Modified: 211201
 

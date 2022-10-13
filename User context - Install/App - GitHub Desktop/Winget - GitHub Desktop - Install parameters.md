@@ -24,10 +24,10 @@ Latest from Winget
 
 ## Program
 ### Install command
-cmd /c ""%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe" install --exact --id GitHub.GitHubDesktop --silent --accept-package-agreements --accept-source-agreements"
+cmd /c ""%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe" install --exact --id GitHub.GitHubDesktop --silent --source winget --accept-package-agreements --accept-source-agreements"
 
 ### Uninstall command
-cmd /c "echo "Not added yet.""
+cmd /c ""%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe" uninstall --exact --id GitHub.GitHubDesktop --silent --source winget --accept-source-agreements"
 
 ### Behavior
 User
@@ -45,7 +45,7 @@ Logic: Exists
 
 
 ## Dependencies
-None
+Dependency - Microsoft Visual C++ 2015-2022
 
 
 ## Assignment

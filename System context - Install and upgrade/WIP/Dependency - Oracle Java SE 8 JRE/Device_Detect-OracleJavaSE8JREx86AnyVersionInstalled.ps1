@@ -4,7 +4,7 @@
         Checks if any Oracle Java SE 8 JRE x86 is installed.
 
     .NOTES
-        Author:   Olav Rønnestad Birkeland
+        Author:   Olav Rønnestad Birkeland | github.com/o-l-a-v
         Created:  220120
         Modified: 220120
 

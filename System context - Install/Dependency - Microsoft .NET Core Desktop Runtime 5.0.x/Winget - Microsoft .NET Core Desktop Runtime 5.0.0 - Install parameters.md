@@ -21,10 +21,10 @@ Latest from Winget
 
 ## Program
 ### Install command
-cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe install --exact --id Microsoft.DotNet.Runtime.5 --silent --accept-package-agreements --accept-source-agreements"
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe install --exact --id Microsoft.DotNet.Runtime.5 --silent --source winget --accept-package-agreements --accept-source-agreements"
 
 ### Uninstall command
-cmd /c "echo "Not added yet.""
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe uninstall --exact --id Microsoft.DotNet.Runtime.5 --silent --source winget --accept-source-agreements"
 
 ### Behavior
 System
@@ -45,7 +45,7 @@ Device_Detect-Dependency_MicrosoftNetCoreDesktopRuntime5_UsingWinget.ps1
 
 
 ## Dependencies
-None
+Dependency - Microsoft Visual C++ 2015-2022
 
 
 ## Assignments

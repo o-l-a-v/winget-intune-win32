@@ -5,7 +5,7 @@
         Installs latest version of App Installer manually.
 
     .NOTES
-        Author:   Olav Rønnestad Birkeland
+        Author:   Olav Rønnestad Birkeland | github.com/o-l-a-v
         Created:  220306
         Modified: 220306
 

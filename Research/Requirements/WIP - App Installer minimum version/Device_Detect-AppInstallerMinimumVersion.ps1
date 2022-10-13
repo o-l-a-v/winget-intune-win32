@@ -4,7 +4,7 @@
         Detects whether a new enough version of App Installer is installed.
 
     .NOTES
-        Author:   Olav Rønnestad Birkeland
+        Author:   Olav Rønnestad Birkeland | github.com/o-l-a-v
         Created:  220306
         Modified: 220306
 

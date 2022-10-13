@@ -3,6 +3,15 @@
 * Will only list major changes here.
 
 
+## 221013
+* Added the prerequired VCRedist / Microsoft Visual C++ 2015-2022 as a Win32 package, which all other Winget Win32 packages should have as a dependency.
+  * Custom PowerShell script that downloads and installs latest version at runtime.
+* Added more info to README.
+* Added ```--source winget``` to install commands and detection scripts.
+* Added uninstall commands using Winget.
+* Fixed new winget package IDs for Microsoft ".NET Core Desktop Runtimes" and "VCRedist" in install commands and scripts, again.
+
+
 ## 220516
 * Added:
   * Microsoft Edge WebView2 Runtime
@@ -14,7 +23,7 @@
 ## 220506
 * Added programs:
   * OBS Studio
-* Added ```--exact``` to winget commands for reliability and security.
+* Added ```--exact``` to install commands and detection scripts for reliability and security.
   * In case packages are removed in future, and winget finds a package with similar id.
 
 

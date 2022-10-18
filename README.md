@@ -18,7 +18,10 @@ After I saw that [rothgecw](https://github.com/rothgecw) had figured out how to 
 ### Pre-requirements
 Following requirements should be included in a fresh installation of Windows 10 and 11, but aren't always present. Which has caused problems. So I'm mentioning them here just in case.
 * ```winget-cli``` must be installed, comes with newer versions of [App Installer](https://www.microsoft.com/en-us/store/apps/9nblggh4nns1).
-* Microsoft Visual C++ Runtime v14 / 2015-2019.
+* [Microsoft Visual C++ Runtime v14 / 2015-2022](https://docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist).
+  * Might get error ```0x8007007B``` with text ```The filename, directory name, or volume label syntax is incorrect (0x8007007B)``` without it.
+* Genuine, activated Windows 10 Education, Enterprise or Professional for using [Win32 with Intune](https://developer.microsoft.com/en-us/microsoft-365/dev-program).
+  * Can be a typical problem if using Hyper-V VMs with [Microsoft 365 Developer Program](https://developer.microsoft.com/en-us/microsoft-365/dev-program) tenants.
 
 
 ### Setup per app
@@ -187,8 +190,10 @@ Specific examples I've come across:
 	
 ## Resources
 ### Similar or related projects
+* https://github.com/ethanbergstrom/Cobalt
 * https://github.com/FlorianSLZ/Intune-Win32-Deployer
 * https://github.com/jdhitsolutions/WingetTools
+* https://github.com/martinet101/WingetUI
 * https://github.com/Romanitho/Winget-Install
 * https://github.com/Romanitho/Winget-autoupdate
 
@@ -204,6 +209,7 @@ Specific examples I've come across:
 * [Simeon Cloud](https://www.simeoncloud.com/) [IntuneAppBuilder](https://github.com/simeoncloud/IntuneAppBuilder)
 * [IconViewer](https://www.botproductions.com/iconview/download.html)
   * To extract icons from EXE files.
+* [MsEndpointMgr - Intune Debug Toolkit](https://msendpointmgr.com/intune-debug-toolkit/)
 
 
 ### Requirements

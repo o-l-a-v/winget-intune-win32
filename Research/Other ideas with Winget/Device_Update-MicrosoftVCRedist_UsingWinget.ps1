@@ -5,7 +5,7 @@
         Update VCRedist using Winget.
 
     .NOTES
-        Author:   Olav Rønnestad Birkeland
+        Author:   Olav Rønnestad Birkeland | github.com/o-l-a-v
         Created:  211128
         Modified: 211128
 

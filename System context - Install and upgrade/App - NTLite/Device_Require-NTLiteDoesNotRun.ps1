@@ -4,7 +4,7 @@
         Detects whether NTLite runs, returns $false if it does.
 
     .NOTES
-        Author:   Olav Rønnestad Birkeland
+        Author:   Olav Rønnestad Birkeland | github.com/o-l-a-v
         Created:  211201
         Modified: 211201
 

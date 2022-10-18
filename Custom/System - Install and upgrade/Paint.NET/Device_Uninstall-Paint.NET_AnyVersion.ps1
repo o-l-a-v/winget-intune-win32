@@ -5,7 +5,7 @@
         Uninstall any version of Paint.NET.
 
     .NOTES
-        Author:   Olav Rønnestad Birkeland
+        Author:   Olav Rønnestad Birkeland | github.com/o-l-a-v
         Created:  211205
         Modified: 211205
 

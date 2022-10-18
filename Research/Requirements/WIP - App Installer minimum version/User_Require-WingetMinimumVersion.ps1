@@ -4,7 +4,7 @@
         Requirement script to check minimum version of winget.exe.
 
     .NOTES
-        Author:   Olav Rønnestad Birkeland
+        Author:   Olav Rønnestad Birkeland | github.com/o-l-a-v
         Created:  220305
         Modified: 220307
 

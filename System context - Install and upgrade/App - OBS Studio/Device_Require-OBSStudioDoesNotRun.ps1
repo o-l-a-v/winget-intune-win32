@@ -4,7 +4,7 @@
         Confirms that Microsoft SQL Server Management Studio (SSMS) is not running.
 
     .NOTES
-        Author:   Olav Rønnestad Birkeland
+        Author:   Olav Rønnestad Birkeland | github.com/o-l-a-v
         Created:  220506
         Modified: 220506
 

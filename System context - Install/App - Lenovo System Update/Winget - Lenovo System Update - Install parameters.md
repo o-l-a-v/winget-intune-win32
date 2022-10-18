@@ -25,9 +25,12 @@ Latest from Winget
 
 ## Program
 ### Install command
-cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe install --exact --id Lenovo.SystemUpdate --silent --accept-package-agreements --accept-source-agreements"
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe install --exact --id Lenovo.SystemUpdate --silent --source winget --accept-package-agreements --accept-source-agreements"
 
 ### Uninstall command
+#### Winget
+cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && winget.exe uninstall --exact --id Lenovo.SystemUpdate --silent --source winget --accept-source-agreements"
+#### Native
 "%ProgramFiles(x86)%\Lenovo\System Update\unins000.exe" /VERYSILENT /NORESTART /SUPPRESSMSGBOXES /DELETE
 
 ### Behavior
@@ -56,3 +59,7 @@ Path:  %ProgramFiles(x86)%\Lenovo\System Update
 File:  Tvsukernel.exe
 Logic: File exists
 PS:    (Get-Item -Path ('{0}\Lenovo\System Update\Tvsukernel.exe'-f${env:ProgramFiles(x86)})).VersionInfo.FileVersionRaw.ToString()
+
+
+## Dependencies
+Dependency - Microsoft Visual C++ 2015-2022

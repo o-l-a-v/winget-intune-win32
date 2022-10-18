@@ -4,7 +4,7 @@
         Installs Zoom in user context.
 
     .NOTES
-        Author:   Olav Rønnestad Birkeland
+        Author:   Olav Rønnestad Birkeland | github.com/o-l-a-v
         Created:  220228
         Modified: 220316
 
@@ -27,6 +27,12 @@ $Uri = [string] 'https://zoom.us/client/latest/ZoomInstaller.exe'
 $Arguments = [string[]]('/quiet','/silent')
 $DownloadPath = [string] '{0}\{1}' -f $env:TEMP, $Uri.Split('/')[-1]
 $DetectionPath = [string] '{0}\Zoom\bin\Zoom.exe' -f $env:APPDATA
+
+
+# Settings
+if ([System.Net.ServicePointManager]::SecurityProtocol.ToString() -ne 'Tls12') {
+    [System.Net.ServicePointManager]::SecurityProtocol = 'Tls12'
+}
 
 
 # Check if installed already

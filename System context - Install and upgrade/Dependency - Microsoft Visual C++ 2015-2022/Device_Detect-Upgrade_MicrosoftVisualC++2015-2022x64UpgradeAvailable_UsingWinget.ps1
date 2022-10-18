@@ -4,9 +4,9 @@
         Uses Winget to see if a new version is available for Microsoft Visual C++ 2015-2022 x64.
 
     .NOTES
-        Author:   Olav Rønnestad Birkeland
+        Author:   Olav Rønnestad Birkeland | github.com/o-l-a-v
         Created:  220121
-        Modified: 220506
+        Modified: 221013
 
     .EXAMPLE
         & $psISE.CurrentFile.FullPath; $LASTEXITCODE
@@ -34,7 +34,7 @@ $Global:OutputEncoding = [Console]::InputEncoding = [Console]::OutputEncoding = 
 
 # Assets
 ## Scenario specific
-$WingetPackageId = [string] 'Microsoft.VC++2015-2022Redist-x64'
+$WingetPackageId = [string] 'Microsoft.VCRedist.2015+.x64'
 
 
 ## Find winget-cli
@@ -110,7 +110,7 @@ if ($OlderVersion) {
 # Winget
 ## Check if installed with Winget
 ### Winget list
-$WingetListCommand = [string] '"{0}" list --exact --id {1} --accept-source-agreements' -f $WingetCliPath, $WingetPackageId
+$WingetListCommand = [string] '"{0}" list --exact --id {1} --source winget --accept-source-agreements' -f $WingetCliPath, $WingetPackageId
 $WingetList = [string[]](
     cmd /c $WingetListCommand | Where-Object -FilterScript {
         $_ -like ('*{0}*' -f $WingetPackageId)

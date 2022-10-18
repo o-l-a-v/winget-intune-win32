@@ -4,9 +4,9 @@
         Uses Winget to see if a new version is available for Oracle Java SE 8 JRE.
 
     .NOTES
-        Author:   Olav Rønnestad Birkeland
+        Author:   Olav Rønnestad Birkeland | github.com/o-l-a-v
         Created:  220119
-        Modified: 220506
+        Modified: 221013
 
     .EXAMPLE
         & $psISE.CurrentFile.FullPath; $LASTEXITCODE
@@ -75,7 +75,7 @@ $Global:OutputEncoding = [Console]::InputEncoding = [Console]::OutputEncoding = 
 
 
 # Check if update available with Winget
-$WingetResult = [string[]](cmd /c ('"{0}" list --exact --id {1} --accept-source-agreements'-f $WingetCliPath, $WingetPackageId))
+$WingetResult = [string[]](cmd /c ('"{0}" list --exact --id {1} --source winget --accept-source-agreements'-f $WingetCliPath, $WingetPackageId))
 
 
 # View output from Winget

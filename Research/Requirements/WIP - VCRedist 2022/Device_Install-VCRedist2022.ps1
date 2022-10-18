@@ -5,7 +5,7 @@
         Installs latest version of VCRedist 2015-2022.
 
     .NOTES
-        Author:   Olav Rønnestad Birkeland
+        Author:   Olav Rønnestad Birkeland | github.com/o-l-a-v
         Created:  220305
         Modified: 220305
 

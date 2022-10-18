@@ -4,7 +4,7 @@
         Script for installing apps using winget.
 
     .NOTES
-        Author:   Olav Rønnestad Birkeland
+        Author:   Olav Rønnestad Birkeland | github.com/o-l-a-v
         Created:  220305
         Modified: 220305
 

@@ -23,4 +23,4 @@
 
 ## Program
 ### Install command
-winget install --id TechSmith.Snagit --override "TSC_APP_LANGUAGE=0 TSC_HIDE_REGISTRATION_KEY=1 TSC_SOFTWARE_KEY= TSC_START_AUTO=0" --accept-package-agreements --accept-source-agreements
+winget install --id TechSmith.Snagit --override "TSC_APP_LANGUAGE=0 TSC_HIDE_REGISTRATION_KEY=1 TSC_SOFTWARE_KEY= TSC_START_AUTO=0"  --source winget --accept-package-agreements --accept-source-agreements

@@ -148,7 +148,9 @@ Not "Peer to Peer" or "Microsoft Connected Cache (MCC)".
     * Authenticity
      * https://github.com/microsoft/winget-pkgs/issues/100
      * https://github.com/microsoft/winget-pkgs/issues/7836
-* Prerequirements like ```winget-cli``` itself, and Microsoft Visual C++ isn't alway available on a clean OS install.  
+	 * https://github.com/microsoft/winget-pkgs/issues/89190
+* Prerequirements like ```winget-cli``` itself, and Microsoft Visual C++ isn't always available on a clean OS install.
+  * Means one must handle prerequirements before being able to use Winget as part of an device enrollment processes.
 
 #### Other shortcomings
 ##### winget-cli / winget.exe

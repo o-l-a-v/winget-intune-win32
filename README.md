@@ -151,6 +151,9 @@ Not "Peer to Peer" or "Microsoft Connected Cache (MCC)".
 	 * https://github.com/microsoft/winget-pkgs/issues/89190
 * Prerequirements like ```winget-cli``` itself, and Microsoft Visual C++ isn't always available on a clean OS install.
   * Means one must handle prerequirements before being able to use Winget as part of an device enrollment processes.
+* Winget returns success if updating sources fails.
+  * https://github.com/microsoft/winget-cli/issues/2679
+
 
 #### Other shortcomings
 ##### winget-cli / winget.exe
@@ -169,20 +172,33 @@ Specific examples I've come across:
 * No native PowerShell support.
   * https://github.com/microsoft/winget-cli/issues/221
 * Can't use ```winget upgrade``` to upgrade a lot of apps.
-  * But can often use ```winget install``` as a workaround.
-* Can't easily configure apps to exclude from ```winget upgrade --all```.
+  * But can sometimes use ```winget install``` as a workaround.
+* Can't easily configure apps to be excluded from ```winget upgrade --all```.
   * https://github.com/microsoft/winget-cli/issues/476
 * Can't specify multiple IDs to install in one command.
 * Can't specify context (machine vs. user) with ```upgrade```.
   * https://github.com/microsoft/winget-cli/issues/2145
 * Can't specify installer type (MSI vs. EXE) if multiple are available with ```install```, nor inside global settings.
+  * https://github.com/microsoft/winget-cli/issues/1166
   * https://github.com/microsoft/winget-cli/issues/2146
+  * Example: 7-Zip: https://github.com/microsoft/winget-pkgs/blob/master/manifests/7/7zip/7zip/22.01/7zip.7zip.installer.yaml
 * MSI doesn't always respect ```--location```.
   * https://github.com/microsoft/winget-cli/issues/1857
 * Can't use installers inside ZIP files.
   * https://github.com/microsoft/winget-cli/issues/140
 * Doesn't handle change in installer type, if vendor goes from EXE to MSI for instance.
   * https://github.com/microsoft/winget-cli/issues/1640
+* Can't create custom detection logic, or write custom `DisplayVersion` to registry, for installers that:
+  * Does not write full version info to Windows registry
+    * Example: Microsoft VCRedist 2010: https://github.com/microsoft/winget-cli/issues/2888
+  * Does not update version number in registry on update:
+    * Example: OBS Studio: https://github.com/microsoft/winget-cli/issues/1856#issuecomment-1276870908
+  * Writes a non-semver-compliant version number.
+    * Example: MakeMKV: https://github.com/microsoft/winget-cli/issues/1856
+* Does not validate supported OS version, this offers non-compatible packages.
+  * https://github.com/microsoft/winget-cli/issues/2209
+  * Example: Windows Terminal: https://github.com/microsoft/winget-cli/issues/2134
+  
 
 ##### winget-pkgs / Manifest
 * [Milestones](https://github.com/microsoft/winget-pkgs/milestones)

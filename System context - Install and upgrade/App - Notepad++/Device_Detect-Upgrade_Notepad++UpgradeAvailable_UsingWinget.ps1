@@ -9,7 +9,8 @@
         Modified: 221013
 
     .EXAMPLE
-        & $psISE.CurrentFile.FullPath; $LASTEXITCODE
+        # Run from this script header with F8 (Run Selection) from PowerShell ISE or VSCode
+        & $(Try{$psEditor.GetEditorContext().CurrentFile.Path}Catch{$psISE.CurrentFile.FullPath}); $LASTEXITCODE
 #>
 
 
@@ -33,7 +34,7 @@ $WingetPackageId = [string] 'Notepad++.Notepad++'
 $WingetDirectory = [string](
     $(
         if ([System.Security.Principal.WindowsIdentity]::GetCurrent().'User'.'Value' -eq 'S-1-5-18') {
-            (Get-Item -Path ('{0}\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe' -f $env:ProgramW6432)).'FullName' | Select-Object -First 1                
+            (Get-Item -Path ('{0}\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe' -f $env:ProgramW6432)).'FullName' | Select-Object -First 1
         }
         else {
             '{0}\Microsoft\WindowsApps' -f $env:LOCALAPPDATA

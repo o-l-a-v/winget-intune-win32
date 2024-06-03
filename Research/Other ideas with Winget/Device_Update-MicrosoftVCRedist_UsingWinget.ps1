@@ -10,7 +10,8 @@
         Modified: 211128
 
     .EXAMPLE
-        & $psISE.CurrentFile.FullPath; $LASTEXITCODE
+        # Run from this script header with F8 (Run Selection) from PowerShell ISE or VSCode
+        & $(Try{$psEditor.GetEditorContext().CurrentFile.Path}Catch{$psISE.CurrentFile.FullPath}); $LASTEXITCODE
 #>
 
 
@@ -29,7 +30,7 @@ $VCRedistVersions = [PSCustomObject[]](
                     'Architecture' = [string] $Architecture
                     'Version'      = [string] $Version
                     'WingetId'     = [string] 'Microsoft.VC++{0}Redist-{1}' -f $Version, $Architecture
-                }                    
+                }
             }
         }
     )
@@ -43,7 +44,7 @@ $WingetCliPath = [string](
     $(
         if ([System.Security.Principal.WindowsIdentity]::GetCurrent().'User'.'Value' -eq 'S-1-5-18') {
             '{0}\AppInstallerCLI.exe' -f (
-                (Get-Item -Path ('{0}\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe' -f $env:ProgramW6432)).'FullName' | Select-Object -First 1                    
+                (Get-Item -Path ('{0}\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe' -f $env:ProgramW6432)).'FullName' | Select-Object -First 1
             )
         }
         else {
@@ -86,9 +87,9 @@ if ($VCRedistVersions.Where{$_.'UpdateAvailable'}.'Count' -le 0) {
 # Update
 foreach ($VCRedistVersion in $VCRedistVersions.Where{$_.'UpdateAvailable'}) {
     Write-Information -MessageData ('# Update available for "{0}"' -f $VCRedistVersion.'WingetId')
-    
+
     # Check for special cases
-    ## If not special case, use winget upgrade    
+    ## If not special case, use winget upgrade
     if ([string]::IsNullOrEmpty($VCRedistSpecialCases.$($VCRedistVersion.'Version'))) {
         Write-Information -MessageData 'No special case defined, upgrading as usual.'
         # Upgrade
@@ -99,7 +100,7 @@ foreach ($VCRedistVersion in $VCRedistVersions.Where{$_.'UpdateAvailable'}) {
             )
         )
     }
-    
+
     ## Else, use winget install <wanted_version>
     else {
         Write-Information -MessageData (
@@ -127,7 +128,7 @@ foreach ($VCRedistVersion in $VCRedistVersions.Where{$_.'UpdateAvailable'}) {
     )
 
     # Output success
-    Write-Information -MessageData ('$LASTEXITCODE = "{0}", $? = "{1}"' -f $LASTEXITCODE, $?.ToString())    
+    Write-Information -MessageData ('$LASTEXITCODE = "{0}", $? = "{1}"' -f $LASTEXITCODE, $?.ToString())
 }
 
 

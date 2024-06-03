@@ -9,8 +9,9 @@
         Modified: 220328
 
     .EXAMPLE
-        & $psISE.CurrentFile.FullPath
-        & $psISE.CurrentFile.FullPath -Testing
+        # Run from this script header with F8 (Run Selection) from PowerShell ISE or VSCode
+        & $(Try{$psEditor.GetEditorContext().CurrentFile.Path}Catch{$psISE.CurrentFile.FullPath})
+        & $(Try{$psEditor.GetEditorContext().CurrentFile.Path}Catch{$psISE.CurrentFile.FullPath}) -Testing
 #>
 
 

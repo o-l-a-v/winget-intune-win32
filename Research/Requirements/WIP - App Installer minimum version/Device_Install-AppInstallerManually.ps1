@@ -10,7 +10,8 @@
         Modified: 220306
 
     .EXAMPLE
-        & $psISE.CurrentFile.FullPath
+        # Run from this script header with F8 (Run Selection) from PowerShell ISE or VSCode
+        & $(Try{$psEditor.GetEditorContext().CurrentFile.Path}Catch{$psISE.CurrentFile.FullPath}); $LASTEXITCODE
 #>
 
 
@@ -35,8 +36,8 @@ $DownloadFiles = [PSCustomObject[]](
         )
     ).ForEach{
         [PSCustomObject]@{
-            'Uri' = [string] $_
-            'FileName' = [string] $_.Split('/')[-1]
+            'Uri'        = [string] $_
+            'FileName'   = [string] $_.Split('/')[-1]
             'TargetPath' = [string] '{0}\{1}' -f $DownloadDirectory, $_.Split('/')[-1]
         }
     }

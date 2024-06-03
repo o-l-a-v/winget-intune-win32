@@ -1,5 +1,4 @@
 ﻿#Requires -Version 5.1
-#Requires -RunAsAdministrator
 <#
     .SYNOPSIS
         Download and install the latest version of Paint.NET
@@ -10,7 +9,8 @@
         Modified: 211206
 
     .EXAMPLE
-        & $psISE.CurrentFile.FullPath; $LASTEXITCODE
+        # Run from this script header with F8 (Run Selection) from PowerShell ISE or VSCode
+        & $(Try{$psEditor.GetEditorContext().CurrentFile.Path}Catch{$psISE.CurrentFile.FullPath}); $LASTEXITCODE
 #>
 
 

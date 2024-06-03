@@ -6,10 +6,11 @@
     .NOTES
         Author:   Olav Rønnestad Birkeland | github.com/o-l-a-v
         Created:  220121
-        Modified: 221013
+        Modified: 240603
 
     .EXAMPLE
-        & $psISE.CurrentFile.FullPath; $LASTEXITCODE
+        # Run from this script header with F8 (Run Selection) from PowerShell ISE or VSCode
+        & $(Try{$psEditor.GetEditorContext().CurrentFile.Path}Catch{$psISE.CurrentFile.FullPath}); $LASTEXITCODE
 #>
 
 
@@ -25,7 +26,7 @@ $InformationPreference = 'Continue'
 
 # Assets
 ## Scenario specific
-$FileDetectPath  = [string] '{0}\Jabra\Direct4\jabra-direct.exe' -f ${env:ProgramFiles(x86)}
+$FileDetectPath  = [string] '{0}\Jabra\Direct6\jabra-direct.exe' -f ${env:ProgramFiles(x86)}
 $WingetPackageId = [string] 'Jabra.Direct'
 
 ## Find winget-cli
@@ -33,7 +34,7 @@ $WingetPackageId = [string] 'Jabra.Direct'
 $WingetDirectory = [string](
     $(
         if ([System.Security.Principal.WindowsIdentity]::GetCurrent().'User'.'Value' -eq 'S-1-5-18') {
-            (Get-Item -Path ('{0}\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe' -f $env:ProgramW6432)).'FullName' | Select-Object -First 1                
+            (Get-Item -Path ('{0}\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe' -f $env:ProgramW6432)).'FullName' | Select-Object -First 1
         }
         else {
             '{0}\Microsoft\WindowsApps' -f $env:LOCALAPPDATA

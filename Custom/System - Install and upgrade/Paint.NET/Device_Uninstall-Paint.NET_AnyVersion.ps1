@@ -10,7 +10,8 @@
         Modified: 211205
 
     .EXAMPLE
-        & $psISE.CurrentFile.FullPath; $LASTEXITCODE
+        # Run from this script header with F8 (Run Selection) from PowerShell ISE or VSCode
+        & $(Try{$psEditor.GetEditorContext().CurrentFile.Path}Catch{$psISE.CurrentFile.FullPath}); $LASTEXITCODE
 #>
 
 
@@ -36,7 +37,7 @@ $AppDisplayName = [string] 'Paint.NET'
 $(
     [string[]](
         'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall',
-        'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall'        
+        'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall'
     )
 ).ForEach{
     Get-ChildItem -Path $_

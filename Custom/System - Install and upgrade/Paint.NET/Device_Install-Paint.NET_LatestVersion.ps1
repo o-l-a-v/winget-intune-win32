@@ -10,7 +10,8 @@
         Modified: 211206
 
     .EXAMPLE
-        & $psISE.CurrentFile.FullPath; $LASTEXITCODE
+        # Run from this script header with F8 (Run Selection) from PowerShell ISE or VSCode
+        & $(Try{$psEditor.GetEditorContext().CurrentFile.Path}Catch{$psISE.CurrentFile.FullPath}); $LASTEXITCODE
 #>
 
 
@@ -189,5 +190,15 @@ if ($Success) {
     Exit 0
 }
 else {
-    Exit $(if($LASTEXITCODE -and $LASTEXITCODE -ne 0){$LASTEXITCODE}else{1})
+    Exit $(
+        if ($LASTEXITCODE -and $LASTEXITCODE -ne 0) {
+            $LASTEXITCODE
+        }
+        elseif ($ExitCode -ne 0) {
+            $ExitCode
+        }
+        else {
+            1
+        }
+    )
 }

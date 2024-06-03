@@ -10,7 +10,8 @@
         Modified: 220305
 
     .EXAMPLE
-        & $psISE.CurrentFile.FullPath
+        # Run from this script header with F8 (Run Selection) from PowerShell ISE or VSCode
+        & $(Try{$psEditor.GetEditorContext().CurrentFile.Path}Catch{$psISE.CurrentFile.FullPath})
 #>
 
 
@@ -28,5 +29,5 @@ $InstallParameters = [string] '/quiet /norestart'
 $Uris = [ordered]@{
     'ARM64' = [string] 'https://aka.ms/vs/17/release/vc_redist.arm64.exe'
     'x64'   = [string] 'https://aka.ms/vs/17/release/vc_redist.x64.exe'
-    'x86'   = [string] 'https://aka.ms/vs/17/release/vc_redist.x86.exe'    
+    'x86'   = [string] 'https://aka.ms/vs/17/release/vc_redist.x86.exe'
 }

@@ -1,8 +1,7 @@
 # Changelog
 
-## About
-
-* Will only list major changes here.
+> [!NOTE]
+> Only major changes will be listed here.
 
 ## 2024-06-03
 

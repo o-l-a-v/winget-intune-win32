@@ -85,19 +85,6 @@ Only for apps without built-in auto update, or where auto-update requires admin 
   * Microsoft Visual Studio Code
   * Notepad++
 
-## Future ideas
-
-* Add check and fix for prerequirements, in case they aren't present.
-  * App Installer version that includes `winget-cli`.
-  * Microsoft Visual C++ v14 runtime.
-* Let users trigger updates themselves.
-  * <https://call4cloud.nl/2022/01/how-i-fell-in-love-with-app-updates/>
-* Create single script per context (user, system) for upgrades.
-  * PSADT, serviceui.exe and toast notifications for showing users notifications when logic runs from system context
-    * <https://www.anoopcnair.com/use-serviceui-with-intune-to-bring-system-process-to-interactive-mode/>
-  * Host manifest of what apps to upgrade in a storage account maybe?
-    * Never use "winget upgrade --all".
-
 ## Background
 
 ### Why

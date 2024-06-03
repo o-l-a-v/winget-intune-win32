@@ -73,12 +73,6 @@ System
 * **Output:** Boolean
 * **Equals:** Yes
 
-#### Script
-
-* **Script:** [Require-AppInstallerMinimumVersion.ps1](./../../Common/Require-AppInstallerMinimumVersion.ps1)
-* **Type:** Boolean
-* **Logic:** $true means requirements were met
-
 ### Upgrade
 
 #### Manually -> File
@@ -91,7 +85,7 @@ System
 
 * **Script:** [Device_Require-Notepad++DoesNotRun.ps1](./Device_Require-Notepad++DoesNotRun.ps1)
 * **Type:** Boolean
-* **Logic:**  $true means not running, which is what we want
+* **Logic:** $true means not running, which is what we want
 
 ## Detection
 
@@ -109,7 +103,7 @@ System
 
 ## Dependencies
 
-Dependency - Microsoft Visual C++ 2015-2022
+None
 
 ## Assignments
 

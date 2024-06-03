@@ -78,10 +78,18 @@ System
 
 ## Requirements
 
-### All scenarios
+### Both
+
+#### General
 
 * 64 bit
 * \>= Windows 10 2004 20H1
+
+#### Script - App Installer / WinGet minimum version
+
+* **Script:** [Require-AppInstallerMinimumVersion.ps1](./../../Common/Require-AppInstallerMinimumVersion.ps1)
+* **Output:** Boolean
+* **Equals:** Yes
 
 ### Upgrade
 
@@ -115,7 +123,7 @@ System
 
 ## Dependencies
 
-[Dependency - Microsoft Visual C++ 2015-2022](./../Dependency%20-%20Microsoft%20Visual%20C++%202015-2022/WinGet%20-%20Microsoft%20Visual%20C++%202015-2022%20-%20Install%20parameters.md)
+None
 
 ## Assignment
 

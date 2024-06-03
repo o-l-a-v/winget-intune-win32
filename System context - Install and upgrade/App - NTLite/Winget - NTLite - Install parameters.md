@@ -107,7 +107,7 @@ System
 
 ## Dependencies
 
-Dependency - Microsoft Visual C++ 2015-2022
+None
 
 ## Assignment
 

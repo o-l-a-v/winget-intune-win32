@@ -2,7 +2,7 @@
 
 ## About
 
-* Id in Winget: `Microsoft.EdgeWebView2Runtime`.
+* WinGet package ID: `Microsoft.EdgeWebView2Runtime`.
 * Kept up to date by itself.
 
 ## App information
@@ -48,20 +48,22 @@ System
 * 64 bit
 * \>= Windows 10 2004 / 20H1
 
-### Script
+### Script - App Installer / WinGet minimum version
 
-Require-AppInstallerMinimumVersion.ps1
+* **Script:** [Require-AppInstallerMinimumVersion.ps1](./../../Common/Require-AppInstallerMinimumVersion.ps1)
+* **Output:** Boolean
+* **Equals:** Yes
 
 ## Detection
 
 ### Script
 
-Device_Detect-Dependency_MicrosoftEdgeWebView2Runtime_UsingWinget.ps1
+[Device_Detect-Dependency_MicrosoftEdgeWebView2Runtime_UsingWinget.ps1](./Device_Detect-Dependency_MicrosoftEdgeWebView2Runtime_UsingWinget.ps1)
 
 ## Dependencies
 
-Dependency - Microsoft Visual C++ 2015-2022
+None
 
 ## Assignments
 
-Don't assign.
+Don't assign

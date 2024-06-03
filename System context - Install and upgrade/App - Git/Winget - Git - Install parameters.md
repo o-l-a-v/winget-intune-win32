@@ -97,7 +97,7 @@ cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8
 
 ## Dependencies
 
-Dependency - Microsoft Visual C++ 2015-2022
+None
 
 ## Assignment
 

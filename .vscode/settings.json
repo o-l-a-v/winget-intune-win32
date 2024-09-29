@@ -1,0 +1,23 @@
+{
+  "[markdown]": {
+    "editor.defaultFormatter": "Jota0222.multi-formatter",
+    "multiFormatter.formatterList": [
+      "DavidAnson.vscode-markdownlint",
+      "yzhang.markdown-all-in-one"
+    ]
+  },
+  "[powershell]": {
+    "editor.tabSize": 4
+  },
+  "files.encoding": "utf8",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.trimAutoWhitespace": true,
+  "markdown.extension.orderedList.autoRenumber": true,
+  "markdown.extension.orderedList.marker": "one",
+  "markdown.updateLinksOnFileMove.enabled": "prompt"
+}

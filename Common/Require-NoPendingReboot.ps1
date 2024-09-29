@@ -28,7 +28,7 @@ $ErrorActionPreference = 'Stop'
 ################################################
 ################################################
 function Test-RegistryKey {
-    [OutputType('bool')]
+    [OutputType([System.Boolean])]
     [CmdletBinding()]
     param
     (
@@ -45,7 +45,7 @@ function Test-RegistryKey {
 }
 
 function Test-RegistryValue {
-    [OutputType('bool')]
+    [OutputType([System.Boolean])]
     [CmdletBinding()]
     param
     (
@@ -66,7 +66,7 @@ function Test-RegistryValue {
 }
 
 function Test-RegistryValueNotNull {
-    [OutputType('bool')]
+    [OutputType([System.Boolean])]
     [CmdletBinding()]
     param
     (
@@ -98,7 +98,7 @@ $tests = @(
     { Test-RegistryValueNotNull -Key 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager' -Value 'PendingFileRenameOperations2' }
     {
         # Added test to check first if key exists, using "ErrorAction ignore" will incorrectly return $true
-        'HKLM:\SOFTWARE\Microsoft\Updates' | Where-Object { test-path $_ -PathType Container } | ForEach-Object {
+        'HKLM:\SOFTWARE\Microsoft\Updates' | Where-Object { Test-Path $_ -PathType Container } | ForEach-Object {
             (Get-ItemProperty -Path $_ -Name 'UpdateExeVolatile' -ErrorAction Ignore | Select-Object -ExpandProperty UpdateExeVolatile) -ne 0
         }
     }
@@ -109,7 +109,7 @@ $tests = @(
     {
         # Added test to check first if keys exists, if not each group will return $Null
         # May need to evaluate what it means if one or both of these keys do not exist
-        ( 'HKLM:\SYSTEM\CurrentControlSet\Control\ComputerName\ActiveComputerName' | Where-Object { test-path $_ } | ForEach-Object{ (Get-ItemProperty -Path $_ ).ComputerName } ) -ne
+        ( 'HKLM:\SYSTEM\CurrentControlSet\Control\ComputerName\ActiveComputerName' | Where-Object { Test-Path $_ } | ForEach-Object{ (Get-ItemProperty -Path $_ ).ComputerName } ) -ne
         ( 'HKLM:\SYSTEM\CurrentControlSet\Control\ComputerName\ComputerName' | Where-Object { Test-Path $_ } | ForEach-Object{ (Get-ItemProperty -Path $_ ).ComputerName } )
     }
     {

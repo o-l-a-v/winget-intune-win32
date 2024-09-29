@@ -1,24 +1,22 @@
 # winget-intune-win32
 
 > [!WARNING]
-> I haven't been working with Intune for years now, so I don't know  whether all this still works.
-> Feel free to open an issue or create a PR if you find any problems. 🙂
+>
+> * I haven't been working with Intune for years now, so I don't know  whether all this still works.
+> * Feel free to open an issue or create a PR if you find any problems. 🙂
+> * Files and info in this repo is provided as is. I'm not responsible for what you decide to push to your clients.
+> * If logic in this repo breaks, I do not commit to fix it in a timely manner.
+>
 
 ## About
 
 ### This repo
 
-Repository containing examples of how to use winget from Intune, also in system context.
+Repository containing examples of how to use WinGet from Intune, also in system context.
 
 ### Inspiration
 
-After I saw that [rothgecw](https://github.com/rothgecw) had figured out how to use [`winget-cli` from System context](https://github.com/microsoft/winget-cli/discussions/962#discussioncomment-1561274), I started thinking about how that would be usefull from Intune.
-
-## Disclaimer
-
-* Files and info in this repo is provided as is. I'm not responsible for what you decide to push to your clients.
-* I'm not good at git. Feel free to commit changes, but I might struggle doing git right. Bear with me.
-* If logic in this repo breaks, I do not commit to fix it in a timely manner.
+After I saw that [rothgecw](https://github.com/rothgecw) had figured out how to use [`winget-cli` from System context](https://github.com/microsoft/winget-cli/discussions/962#discussioncomment-1561274), I started thinking about how this could be used from Intune.
 
 ## How to use
 
@@ -26,8 +24,8 @@ After I saw that [rothgecw](https://github.com/rothgecw) had figured out how to 
 
 Following requirements should be included in a fresh installation of Windows 10 and 11, but aren't always present. Which has caused problems. So I'm mentioning them here just in case.
 
-* `winget-cli` must be installed, comes with newer versions of [App Installer](https://www.microsoft.com/en-us/store/apps/9nblggh4nns1).
-* [Microsoft Visual C++ Runtime v14 / 2015-2022](https://docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist).
+* `winget-cli` must be installed, comes with newer versions of [App Installer](https://apps.microsoft.com/detail/9nblggh4nns1?hl=en-us&gl=US).
+* [Microsoft Visual C++ Runtime v14 / 2015-2022](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist).
   * Might get error `0x8007007B` with text `The filename, directory name, or volume label syntax is incorrect (0x8007007B)` without it.
 * Genuine, activated Windows 10 Education, Enterprise or Professional for using [Win32 with Intune](https://developer.microsoft.com/en-us/microsoft-365/dev-program).
   * Can be a typical problem if using Hyper-V VMs with [Microsoft 365 Developer Program](https://developer.microsoft.com/en-us/microsoft-365/dev-program) tenants.
@@ -121,11 +119,14 @@ Make everything and app that
 
 #### Network bandwidth
 
-Does not support local caching or peer to peer, like Intune Win32 apps does.
+> [!TIP]
+> There are tools that can download WinGet packages, package them to `.intunewin` and upload them to Intune, which could help offloading WAN using caching and peer to peer sharing. See [resources](#upload-winget-apps-to-intune-win32) for examples on such tools.
+
+Running WinGet directly on the client does not support local caching or peer to peer, like uploading packages to Intune as Win32 apps does.
 
 Apparently, WinGet supports Delivery Optimization, but only "HTTP Downloader".
 
-* <https://docs.microsoft.com/en-us/windows/deployment/do/waas-delivery-optimization#windows-client>
+* <https://learn.microsoft.com/en-us/windows/deployment/do/waas-delivery-optimization#windows-client>
 
 Not "Peer to Peer" or "Microsoft Connected Cache (MCC)".
 
@@ -135,12 +136,12 @@ Not "Peer to Peer" or "Microsoft Connected Cache (MCC)".
   * <https://github.com/microsoft/winget-cli/issues/151>
   * <https://github.com/microsoft/winget-cli/issues/225>
 * WinGet CLI settings
-  * <https://docs.microsoft.com/en-us/windows/package-manager/winget/settings#downloader>
+  * <https://learn.microsoft.com/en-us/windows/package-manager/winget/settings#downloader>
   * <https://github.com/microsoft/winget-cli/blob/master/doc/Settings.md#downloader>
 * Delivery Optimization
-  * <https://docs.microsoft.com/en-us/windows/deployment/do/whats-new-do>
+  * <https://learn.microsoft.com/en-us/windows/deployment/do/whats-new-do>
 * Microsoft Connected Cache (MCC)
-  * <https://docs.microsoft.com/en-us/windows/deployment/do/waas-delivery-optimization>
+  * <https://learn.microsoft.com/en-us/windows/deployment/do/waas-delivery-optimization>
   * <https://oliverkieselbach.com/2020/03/07/delivery-optimization-with-intune-and-microsoft-connected-cache-mcc/>
   * <https://www.petervanderwoude.nl/post/microsoft-connected-cache-in-configmgr-with-win32-apps-of-intune/>
 
@@ -237,14 +238,30 @@ Some issues I've either experienced or I think is worth knowing about:
 
 ### Similar or relatable projects
 
-* <https://github.com/asheroto/winget-install>
-* <https://github.com/ethanbergstrom/Cobalt>
-* <https://github.com/FlorianSLZ/Intune-Win32-Deployer>
-* <https://github.com/jdhitsolutions/WingetTools>
-* <https://github.com/martinet101/WingetUI>
+* Install WinGet on servers: <https://github.com/asheroto/winget-install>
 * <https://github.com/Romanitho/Winget-Install>
 * <https://github.com/Romanitho/Winget-autoupdate>
+
+### PowerShell modules
+
+* Official module `Microsoft.WinGet.Client`: <https://www.powershellgallery.com/packages/Microsoft.WinGet.Client>
+* Unofficial module `Cobalt` made using [Crescendo](https://learn.microsoft.com/en-us/powershell/utility-modules/crescendo/overview): <https://github.com/ethanbergstrom/Cobalt>
+* Unofficial module `WingetTools`: <https://github.com/jdhitsolutions/WingetTools>
+
+### Client GUIs
+
+* <https://github.com/marticliment/UniGetUI>
+
+### Upload WinGet apps to Intune Win32
+
+* <https://github.com/FlorianSLZ/Intune-Win32-Deployer>
+* <https://github.com/Romanitho/WingetIntunePackager>
 * <https://github.com/svrooij/WingetIntune>, <https://wintuner.app/>
+
+### Commercial products
+
+* [Robopack](https://robopack.com/)
+* [Patch My PC](https://patchmypc.com/application-patch-management)
 
 ### Tools
 
@@ -256,11 +273,11 @@ Some issues I've either experienced or I think is worth knowing about:
 
 #### By others
 
-* [Oliver Kieselbach](https://oliverkieselbach.com/) [IntuneWinAppUtilDecoder](https://github.com/okieselbach/Intune/tree/master/IntuneWinAppUtilDecoder)
-* [Simeon Cloud](https://www.simeoncloud.com/) [IntuneAppBuilder](https://github.com/simeoncloud/IntuneAppBuilder)
 * [IconViewer](https://www.botproductions.com/iconview/download.html)
   * To extract icons from EXE files.
 * [MsEndpointMgr - Intune Debug Toolkit](https://msendpointmgr.com/intune-debug-toolkit/)
+* [Oliver Kieselbach](https://oliverkieselbach.com/) [IntuneWinAppUtilDecoder](https://github.com/okieselbach/Intune/tree/master/IntuneWinAppUtilDecoder)
+* [Simeon Cloud](https://www.simeoncloud.com/) [IntuneAppBuilder](https://github.com/simeoncloud/IntuneAppBuilder)
 
 ### Requirements
 

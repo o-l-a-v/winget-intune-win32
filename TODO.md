@@ -11,7 +11,7 @@
   * PSADT, serviceui.exe and toast notifications for showing users notifications when logic runs from system context
     * <https://www.anoopcnair.com/use-serviceui-with-intune-to-bring-system-process-to-interactive-mode/>
   * Host manifest of what apps to upgrade in a storage account maybe?
-    * Never use "winget upgrade --all".
+    * Never use `winget upgrade --all`.
 
 ## Done
 

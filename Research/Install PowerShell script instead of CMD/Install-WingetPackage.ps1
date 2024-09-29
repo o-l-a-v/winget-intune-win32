@@ -74,3 +74,7 @@ $ArgumentList = [string[]](
 
 # Start
 $Process = Start-Process -FilePath $WingetPath -ArgumentList $ArgumentList -NoNewWindow -Wait -PassThru
+
+
+# Check success
+$Process.'ExitCode'

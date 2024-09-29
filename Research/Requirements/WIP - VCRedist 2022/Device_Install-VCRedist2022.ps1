@@ -27,7 +27,7 @@ $ErrorActionPreference = 'Stop'
 # Assets
 $InstallParameters = [string] '/quiet /norestart'
 $Uris = [ordered]@{
-    'ARM64' = [string] 'https://aka.ms/vs/17/release/vc_redist.arm64.exe'
-    'x64'   = [string] 'https://aka.ms/vs/17/release/vc_redist.x64.exe'
-    'x86'   = [string] 'https://aka.ms/vs/17/release/vc_redist.x86.exe'
+  'ARM64' = [string] 'https://aka.ms/vs/17/release/vc_redist.arm64.exe'
+  'x64'   = [string] 'https://aka.ms/vs/17/release/vc_redist.x64.exe'
+  'x86'   = [string] 'https://aka.ms/vs/17/release/vc_redist.x86.exe'
 }

@@ -21,5 +21,6 @@
   "files.trimTrailingWhitespace": true,
   "markdown.extension.orderedList.autoRenumber": true,
   "markdown.extension.orderedList.marker": "one",
-  "markdown.updateLinksOnFileMove.enabled": "prompt"
+  "markdown.updateLinksOnFileMove.enabled": "prompt",
+  "powershell.scriptAnalysis.enable": true
 }

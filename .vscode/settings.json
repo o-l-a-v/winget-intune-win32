@@ -7,12 +7,12 @@
     ]
   },
   "[powershell]": {
-    "editor.indentSize": 4
+    "editor.tabSize": 4
   },
   "editor.formatOnSave": true,
-  "editor.indentSize": 2,
+  "editor.indentSize": "tabSize",
   "editor.insertSpaces": true,
-  "editor.tabSize": 4,
+  "editor.tabSize": 2,
   "editor.trimAutoWhitespace": true,
   "files.encoding": "utf8",
   "files.eol": "\n",

@@ -202,6 +202,8 @@ Some issues I've either experienced or I think is worth knowing about:
   * GitHub issue 2022-11-19: <https://github.com/microsoft/winget-cli/issues/2711>.
 * Portable packages that are added to `PATH` issue 2: Upgrade of user scope packages removes package from `PATH`.
   * GitHub issue 2024-01-08: <https://github.com/microsoft/winget-cli/issues/4044>.
+* Portable packages does not get a start menu shortcut.
+  * GitHub issue 2022-07-01: <https://github.com/microsoft/winget-cli/issues/2299>.
 
 <details><summary>Issues that have been fixed</summary>
 

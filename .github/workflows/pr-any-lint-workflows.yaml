@@ -1,0 +1,37 @@
+name: Lint GitHub workflows with zizmor
+
+run-name: '${{ github.workflow }} - [${{ github.event.pull_request.title }} #${{ github.event.pull_request.number }}] by @${{ github.actor }}'
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/**
+
+jobs:
+  zizmor:
+    name: Run zizmor latest via PyPI
+    permissions:
+      contents: read
+      pull-requests: read
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛎️ GitHub checkout branch "${{ github.head_ref }}"
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: 🔍 Get changed files
+        id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            workflows:
+              - added|modified: '.github/workflows/**'
+          list-files: escape
+      - name: ⬇️ Install the latest version of uv
+        if: steps.filter.outputs.workflows == 'true'
+        uses: astral-sh/setup-uv@v4
+      - name: 🔍 Run zizmor
+        if: steps.filter.outputs.workflows == 'true'
+        run: |
+          uvx zizmor --format plain --offline --min-confidence low --min-severity low \
+          ${{ steps.filter.outputs.workflows_files }}

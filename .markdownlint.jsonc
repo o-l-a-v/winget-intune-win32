@@ -1,0 +1,38 @@
+{
+  "default": true,
+  "MD003": { // MD003/heading-style : Heading style
+    "style": "consistent"
+  },
+  "MD012": true, // MD012/no-multiple-blanks : Multiple consecutive blank lines
+  "MD022": true, // MD022/blanks-around-headings : Headings should be surrounded by blank lines
+  "MD024": { // MD024/no-duplicate-heading : Multiple headings with the same content
+    "siblings_only": true
+  },
+  "MD025": true, // MD025/single-title/single-h1 : Multiple top-level headings in the same document
+  "MD031": true, // MD031/blanks-around-fences : Fenced code blocks should be surrounded by blank lines
+  "MD032": true, // MD032/blanks-around-lists : Lists should be surrounded by blank lines
+  "MD033": { // MD033/no-inline-html : Inline HTML
+    "allowed_elements": [
+      "a",
+      "br",
+      "code",
+      "details",
+      "img",
+      "li",
+      "ol",
+      "p",
+      "style",
+      "summary",
+      "table",
+      "td",
+      "th",
+      "tr",
+      "ul"
+    ]
+  },
+  "MD040": true, // MD040/fenced-code-language : Fenced code blocks should have a language specified
+  "MD046": false,
+  "MD055": {
+    "style": "consistent"
+  }
+}

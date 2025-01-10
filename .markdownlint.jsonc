@@ -4,6 +4,7 @@
     "style": "consistent"
   },
   "MD012": true, // MD012/no-multiple-blanks : Multiple consecutive blank lines
+  "MD013": false, // Line length
   "MD022": true, // MD022/blanks-around-headings : Headings should be surrounded by blank lines
   "MD024": { // MD024/no-duplicate-heading : Multiple headings with the same content
     "siblings_only": true

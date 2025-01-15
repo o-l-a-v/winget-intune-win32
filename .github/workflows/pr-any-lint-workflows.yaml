@@ -8,14 +8,14 @@ on:
       - .github/workflows/**
 
 jobs:
-  zizmor:
+  lint-workflows:
     name: Run zizmor latest via PyPI
     permissions:
       contents: read
       pull-requests: read
     runs-on: ubuntu-latest
     steps:
-      - name: 🛎️ GitHub checkout branch "${{ github.head_ref }}"
+      - name: 🛎️ GitHub checkout branch "${{ github.head_ref || github.ref_name }}"
         uses: actions/checkout@v4
         with:
           persist-credentials: false

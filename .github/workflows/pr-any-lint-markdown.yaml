@@ -1,4 +1,4 @@
-name: Lint markdown with mardownlint-cli2
+name: Lint Markdown with mardownlint-cli2
 
 run-name: '${{ github.workflow }} - [${{ github.event.pull_request.title }} #${{ github.event.pull_request.number }}] by @${{ github.actor }}'
 
@@ -8,14 +8,14 @@ on:
       - '**.md'
 
 jobs:
-  zizmor:
+  lint-markdown:
     name: Run markdownlint-cli2
     permissions:
       contents: read
       pull-requests: read
     runs-on: ubuntu-latest
     steps:
-      - name: 🛎️ GitHub checkout branch "${{ github.head_ref }}"
+      - name: 🛎️ GitHub checkout branch "${{ github.head_ref || github.ref_name }}"
         uses: actions/checkout@v4
         with:
           persist-credentials: false

@@ -21,7 +21,7 @@ jobs:
           persist-credentials: false
       - name: 🔍 Get changed files
         id: filter
-        uses: dorny/paths-filter@v3
+        uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2
         with:
           filters: |
             markdown:
@@ -29,6 +29,6 @@ jobs:
           list-files: escape
       - name: 🔍 Lint with markdownlint-cli2
         if: steps.filter.outputs.markdown == 'true'
-        uses: DavidAnson/markdownlint-cli2-action@v19
+        uses: DavidAnson/markdownlint-cli2-action@05f32210e84442804257b2a6f20b273450ec8265 # v19.1.0
         with:
           globs: ${{ steps.filter.outputs.markdown_files }}

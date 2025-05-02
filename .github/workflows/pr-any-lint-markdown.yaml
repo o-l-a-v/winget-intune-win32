@@ -7,6 +7,10 @@ on:
     paths:
       - '**.md'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   lint-markdown:
     name: Run markdownlint-cli2

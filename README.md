@@ -2,7 +2,7 @@
 
 > [!WARNING]
 >
-> * I haven't been working with Intune for years now, so I don't know  whether all this still works.
+> * I haven't been working with Intune for years now, so I don't know whether all this still works.
 > * Feel free to open an issue or create a PR if you find any problems. 🙂
 > * Files and info in this repo is provided as is. I'm not responsible for what you decide to push to your clients.
 > * If logic in this repo breaks, I do not commit to fix it in a timely manner.
@@ -240,9 +240,7 @@ Some issues I've either experienced or I think is worth knowing about:
 
 ### Similar or relatable projects
 
-* Install WinGet on servers: <https://github.com/asheroto/winget-install>
 * <https://github.com/Romanitho/Winget-Install>
-* <https://github.com/Romanitho/Winget-autoupdate>
 
 ### PowerShell modules
 
@@ -252,13 +250,23 @@ Some issues I've either experienced or I think is worth knowing about:
 
 ### Client GUIs
 
-* <https://github.com/marticliment/UniGetUI>
+* UniGetUI: <https://github.com/marticliment/UniGetUI>
+* Winget-AutoUpdate: <https://github.com/Romanitho/Winget-autoupdate>
 
-### Upload WinGet apps to Intune Win32
+### Install WinGet itself
 
-* <https://github.com/FlorianSLZ/Intune-Win32-Deployer>
+* Install WinGet on servers: <https://github.com/asheroto/winget-install>
+
+### Download a WinGet app and make it into a Win32 package
+
 * <https://github.com/Romanitho/WingetIntunePackager>
-* <https://github.com/svrooij/WingetIntune>, <https://wintuner.app/>
+
+### Upload WinGet apps to Intune as Win32 package
+
+* <https://github.com/FlorianSLZ/IntuneWin32Deployer>
+  * From WinGet and Chocolatey → Intune Win32 package.
+* <https://github.com/svrooij/WinTuner>, <https://wintuner.app/>
+  * From WinGet → Intune Win32 package.
 
 ### Commercial products
 

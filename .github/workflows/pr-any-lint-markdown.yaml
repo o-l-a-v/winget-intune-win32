@@ -1,11 +1,11 @@
 name: Lint Markdown with mardownlint-cli2
 
-run-name: '${{ github.workflow }} - [${{ github.event.pull_request.title }} #${{ github.event.pull_request.number }}] by @${{ github.actor }}'
+run-name: "${{ github.workflow }} - [${{ github.event.pull_request.title }} #${{ github.event.pull_request.number }}] by @${{ github.actor }}"
 
 on:
   pull_request:
     paths:
-      - '**.md'
+      - "**.md"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🛎️ GitHub checkout branch "${{ github.head_ref || github.ref_name }}"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           persist-credentials: false
       - name: 🔍 Get changed files
@@ -33,6 +33,6 @@ jobs:
           list-files: escape
       - name: 🔍 Lint with markdownlint-cli2
         if: steps.filter.outputs.markdown == 'true'
-        uses: DavidAnson/markdownlint-cli2-action@05f32210e84442804257b2a6f20b273450ec8265 # v19.1.0
+        uses: DavidAnson/markdownlint-cli2-action@992badcdf24e3b8eb7e87ff9287fe931bcb00c6e # v20.0.0
         with:
           globs: ${{ steps.filter.outputs.markdown_files }}

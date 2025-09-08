@@ -1,6 +1,6 @@
 name: Lint GitHub workflows with zizmor
 
-run-name: '${{ github.workflow }} - [${{ github.event.pull_request.title }} #${{ github.event.pull_request.number }}] by @${{ github.actor }}'
+run-name: "${{ github.workflow }} - [${{ github.event.pull_request.title }} #${{ github.event.pull_request.number }}] by @${{ github.actor }}"
 
 on:
   pull_request:
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🛎️ GitHub checkout branch "${{ github.head_ref || github.ref_name }}"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           persist-credentials: false
       - name: 🔍 Get changed files
@@ -33,7 +33,7 @@ jobs:
           list-files: escape
       - name: ⬇️ Install the latest version of uv
         if: steps.filter.outputs.workflows == 'true'
-        uses: astral-sh/setup-uv@6b9c6063abd6010835644d4c2e1bef4cf5cd0fca # v6.0.1
+        uses: astral-sh/setup-uv@557e51de59eb14aaaba2ed9621916900a91d50c6 # v6.6.0
       - name: 🔍 Run zizmor
         if: steps.filter.outputs.workflows == 'true'
         run: |

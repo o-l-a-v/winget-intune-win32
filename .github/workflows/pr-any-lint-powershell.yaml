@@ -1,11 +1,11 @@
 name: Lint PowerShell with PSScriptAnalyzer
 
-run-name: '${{ github.workflow }} - [${{ github.event.pull_request.title }} #${{ github.event.pull_request.number }}] by @${{ github.actor }}'
+run-name: "${{ github.workflow }} - [${{ github.event.pull_request.title }} #${{ github.event.pull_request.number }}] by @${{ github.actor }}"
 
 on:
   pull_request:
     paths:
-      - '**.ps1'
+      - "**.ps1"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🛎️ GitHub checkout branch "${{ github.head_ref || github.ref_name }}"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           persist-credentials: false
       - name: 🔍 Get changed files

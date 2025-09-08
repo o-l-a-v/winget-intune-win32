@@ -1,0 +1,69 @@
+name: Ensure changed files follows EditorConfig settings
+
+run-name: "${{ github.workflow }} - [${{ github.event.pull_request.title }} #${{ github.event.pull_request.number }}] by @${{ github.actor }}"
+
+on:
+  pull_request:
+    paths:
+      - "**.json"
+      - "**.jsonc"
+      - "**.md"
+      - "**.ps1"
+      - "**.yaml"
+      - "**.yml"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  changes:
+    name: Find relevant changed files
+    outputs:
+      changed: ${{ steps.filter.outputs.changed }}
+      files: ${{ steps.filter.outputs.changed_files }}
+    permissions:
+      contents: read
+      pull-requests: read
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛎️ GitHub checkout branch "${{ github.head_ref || github.ref_name }}"
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - name: 🔍 Get changed files
+        id: filter
+        uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2
+        with:
+          filters: |
+            changed:
+              - added|modified: '**.json'
+              - added|modified: '**.jsonc'
+              - added|modified: '**.md'
+              - added|modified: '**.ps1'
+              - added|modified: '**.yaml'
+              - added|modified: '**.yml'
+          list-files: escape
+      - name: 🪲 Debug
+        run: echo ${{ steps.filter.outputs.changed_files }}
+  editorconfig-checker:
+    name: Run EditorConfig-Checker on relevant changed files
+    needs: changes
+    if: ${{ needs.changes.outputs.changed == 'true' }}
+    permissions:
+      contents: read
+      pull-requests: read
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🪲 Debug
+        run: echo ${{ needs.changes.outputs.files }}
+      - name: 🛎️ GitHub checkout branch "${{ github.head_ref || github.ref_name }}"
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - name: ⬇️ Install EditorConfig-Checker
+        run: go install github.com/editorconfig-checker/editorconfig-checker/v3/cmd/editorconfig-checker@latest
+      - name: 🔍 Run EditorConfig-Checker
+        run: |
+          /home/runner/go/bin/editorconfig-checker -format github-actions \
+          ${{ needs.changes.outputs.files }}

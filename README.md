@@ -120,7 +120,7 @@ Make everything and app that
 #### Network bandwidth
 
 > [!TIP]
-> There are tools that can download WinGet packages, package them to `.intunewin` and upload them to Intune, which could help offloading WAN using caching and peer to peer sharing. See [resources](#upload-winget-apps-to-intune-win32) for examples on such tools.
+> There are tools that can download WinGet packages, package them to `.intunewin` and upload them to Intune, which could help offloading WAN using caching and peer to peer sharing. See [resources](#upload-winget-apps-to-intune-as-win32-package) for examples on such tools.
 
 Running WinGet directly on the client does not support local caching or peer to peer, like uploading packages to Intune as Win32 apps does.
 

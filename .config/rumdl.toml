@@ -16,6 +16,10 @@ style = "asterisk"
 [MD029]
 style = "one-or-ordered"
 
+# MD033 / no-inline-html - No HTML tags
+[MD033]
+allowed-elements = ["details", "summary"]
+
 # MD040 / fenced-code-language - Code blocks should have a language specified
 [MD040]
 style = "disabled"

@@ -1,0 +1,30 @@
+# rumdl configuration
+# Schema: https://raw.githubusercontent.com/rvben/rumdl/main/rumdl.schema.json
+
+[global]
+disable = ["MD013", "MD025", "MD041"]
+
+# MD003 / heading-style - Heading style should be consistent
+[MD003]
+style = "atx"
+
+# MD004 / ul-style - Unordered list style should be consistent
+[MD004]
+style = "asterisk"
+
+# MD029 / ol-prefix - Use consistent numbers for ordered lists
+[MD029]
+style = "one-or-ordered"
+
+# MD040 / fenced-code-language - Code blocks should have a language specified
+[MD040]
+style = "disabled"
+
+# MD055 / table-pipe-style - Keep table formatting consistent
+[MD055]
+style = "leading-and-trailing"
+
+# MD060 / table-format - Table Format
+[MD060]
+enabled = true
+style = "aligned"

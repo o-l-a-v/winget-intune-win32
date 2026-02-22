@@ -19,7 +19,7 @@ Param(
     [string[]] $FilePaths,
 
     [Parameter()]
-    [string] $PssaSettingsFile = './PSScriptAnalyzerSettings.psd1'
+    [string] $PssaSettingsFile = './.config/PSScriptAnalyzerSettings.psd1'
 )
 
 
@@ -57,14 +57,14 @@ foreach ($FilePath in $FilePaths) {
 Write-Information -MessageData '# Total'
 Write-Information -MessageData (
     $AllFindings.'Findings'.'Severity' |
-        Group-Object -NoElement |
-        Sort-Object -Property 'Name' |
-        Format-Table |
-        Out-String
+    Group-Object -NoElement |
+    Sort-Object -Property 'Name' |
+    Format-Table |
+    Out-String
 ).Trim()
 
 
 # Throw if any severity "Error" was found
-if ($AllFindings.'Findings'.Where{$_.'Severity' -eq 'Error'}.'Count' -gt 0) {
+if ($AllFindings.'Findings'.Where{ $_.'Severity' -eq 'Error' }.'Count' -gt 0) {
     Throw 'Findings with severity "Error" was found.'
 }

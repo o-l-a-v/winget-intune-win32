@@ -1,10 +1,6 @@
 {
   "[markdown]": {
-    "editor.defaultFormatter": "Jota0222.multi-formatter",
-    "multiFormatter.formatterList": [
-      "DavidAnson.vscode-markdownlint",
-      "yzhang.markdown-all-in-one"
-    ]
+    "editor.defaultFormatter": "rvben.rumdl"
   },
   "[powershell]": {
     "editor.tabSize": 4
@@ -19,9 +15,7 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
-  "markdown.extension.orderedList.autoRenumber": true,
-  "markdown.extension.orderedList.marker": "one",
   "markdown.updateLinksOnFileMove.enabled": "prompt",
   "powershell.scriptAnalysis.enable": true,
-  "powershell.scriptAnalysis.settingsPath": "../PSScriptAnalyzerSettings.psd1"
+  "powershell.scriptAnalysis.settingsPath": "../.config/PSScriptAnalyzerSettings.psd1"
 }

@@ -1,4 +1,4 @@
-name: Ensure changed files follows EditorConfig settings
+name: Ensure changed files follow EditorConfig settings
 
 run-name: "${{ github.workflow }} - [${{ github.event.pull_request.title }} #${{ github.event.pull_request.number }}] by @${{ github.actor }}"
 
@@ -25,10 +25,10 @@ jobs:
     permissions:
       contents: read
       pull-requests: read
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - name: 🛎️ GitHub checkout branch "${{ github.head_ref || github.ref_name }}"
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           persist-credentials: false
       - name: 🔍 Get changed files
@@ -58,7 +58,7 @@ jobs:
       - name: 🪲 Debug
         run: echo ${{ needs.changes.outputs.files }}
       - name: 🛎️ GitHub checkout branch "${{ github.head_ref || github.ref_name }}"
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           persist-credentials: false
       - name: ⬇️ Install EditorConfig-Checker

@@ -85,7 +85,7 @@ System
 
 * **Script:** [Device_Require-XnConvertDoesNotRun.ps1](./Device_Require-XnConvertDoesNotRun.ps1)
 * **Type:** Boolean
-* **Logic:**  $true means not running, which is what we want
+* **Logic:** $true means not running, which is what we want
 
 ## Detect
 

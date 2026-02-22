@@ -6,8 +6,7 @@ on:
   pull_request:
     paths:
       - "**.md"
-      - "{.,}rumdl.toml"
-      - ".config/{.,}rumdl.toml"
+      - "**/*rumdl.toml"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

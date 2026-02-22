@@ -18,7 +18,7 @@
 * [x] Add check and fix for prerequirements, in case they aren't present.
   * App Installer version that includes `winget-cli`.
   * Microsoft Visual C++ v14 runtime.
-  * Done, see [here](./Prerequirement%20-%20VCRedist%202015-2022/Microsoft%20VCRedist%202015-2022%20-%20Install%20parameters.md).
+  * Done, see [prerequirement for vcredist](./Prerequirement%20-%20VCRedist%202015-2022/Microsoft%20VCRedist%202015-2022%20-%20Install%20parameters.md).
 * [x] Standardize on requirement/dependency for packages installed using WinGet.
   * Use Win32 requirements to run some script?
     * [Common/Require-AppInstallerMinimumVersion.ps1](./Common/Require-AppInstallerMinimumVersion.ps1)

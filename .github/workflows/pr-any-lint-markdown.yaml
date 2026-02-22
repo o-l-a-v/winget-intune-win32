@@ -32,7 +32,7 @@ jobs:
             markdown:
               - added|modified: '**.md'
             rumdlconf:
-              - added|modified: '.rumdl.toml'
+              - added|modified: '**rumdl.toml'
           list-files: escape
       - name: ⬇️ Install the latest version of uv
         if: steps.filter.outputs.markdown == 'true' || steps.filter.outputs.rumdlconf == 'true'

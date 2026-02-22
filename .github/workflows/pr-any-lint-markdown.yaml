@@ -1,4 +1,4 @@
-name: Lint Markdown with mardownlint-cli2
+name: Lint markdown with rumdl
 
 run-name: "${{ github.workflow }} - [${{ github.event.pull_request.title }} #${{ github.event.pull_request.number }}] by @${{ github.actor }}"
 
@@ -6,6 +6,7 @@ on:
   pull_request:
     paths:
       - "**.md"
+      - "**/*rumdl.toml"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -13,14 +14,14 @@ concurrency:
 
 jobs:
   lint-markdown:
-    name: Run markdownlint-cli2
+    name: Run rumdl
     permissions:
       contents: read
       pull-requests: read
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - name: 🛎️ GitHub checkout branch "${{ github.head_ref || github.ref_name }}"
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           persist-credentials: false
       - name: 🔍 Get changed files
@@ -30,9 +31,21 @@ jobs:
           filters: |
             markdown:
               - added|modified: '**.md'
+            rumdlconf:
+              - added|modified: '{.,}rumdl.toml'
+              - added|modified: '.config/{.,}rumdl.toml'
           list-files: escape
-      - name: 🔍 Lint with markdownlint-cli2
-        if: steps.filter.outputs.markdown == 'true'
-        uses: DavidAnson/markdownlint-cli2-action@992badcdf24e3b8eb7e87ff9287fe931bcb00c6e # v20.0.0
+      - name: ⬇️ Install the latest version of uv
+        if: steps.filter.outputs.markdown == 'true' || steps.filter.outputs.rumdlconf == 'true'
+        uses: astral-sh/setup-uv@eac588ad8def6316056a12d4907a9d4d84ff7a3b # v7.3.0
         with:
-          globs: ${{ steps.filter.outputs.markdown_files }}
+          cache-dependency-glob: ""
+          enable-cache: true
+      - name: 🔍 Lint changed markdown files with rumdl
+        if: steps.filter.outputs.markdown == 'true' && steps.filter.outputs.rumdlconf == 'false'
+        shell: bash
+        run: uvx rumdl check ${{ steps.filter.outputs.markdown_files }}
+      - name: 🔍 Lint all markdown files with rumdl when ".rumdl.toml" is updated
+        if: steps.filter.outputs.rumdlconf == 'true'
+        shell: bash
+        run: uvx rumdl check .

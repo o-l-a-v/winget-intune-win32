@@ -104,7 +104,7 @@ System
 
 ### Upgrade
 
-* [Device_Detect-Upgrade_MicrosoftSQLServerManagementStudioUpgradeAvailableUsingWinget.ps1](./Device_Detect-Upgrade_MicrosoftSQLServerManagementStudioUpgradeAvailableUsingWinget.ps1)
+* [Device_Detect-Upgrade_MicrosoftSQLServerManagementStudioUpgradeAvailable_UsingWinget.ps1](./Device_Detect-Upgrade_MicrosoftSQLServerManagementStudioUpgradeAvailable_UsingWinget.ps1)
 
 ## Dependencies
 

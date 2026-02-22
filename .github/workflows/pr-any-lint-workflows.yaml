@@ -17,10 +17,10 @@ jobs:
     permissions:
       contents: read
       pull-requests: read
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - name: 🛎️ GitHub checkout branch "${{ github.head_ref || github.ref_name }}"
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           persist-credentials: false
       - name: 🔍 Get changed files
@@ -33,9 +33,13 @@ jobs:
           list-files: escape
       - name: ⬇️ Install the latest version of uv
         if: steps.filter.outputs.workflows == 'true'
-        uses: astral-sh/setup-uv@557e51de59eb14aaaba2ed9621916900a91d50c6 # v6.6.0
+        uses: astral-sh/setup-uv@eac588ad8def6316056a12d4907a9d4d84ff7a3b # v7.3.0
+        with:
+          cache-dependency-glob: ""
+          enable-cache: true
       - name: 🔍 Run zizmor
         if: steps.filter.outputs.workflows == 'true'
         run: |
           uvx zizmor --format plain --offline --min-confidence low --min-severity low \
+          --config ./.config/zizmor.yml \
           ${{ steps.filter.outputs.workflows_files }}
